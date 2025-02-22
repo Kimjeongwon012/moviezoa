@@ -1,0 +1,49 @@
+.movie-card {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    width: 175px;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+
+.movie-card img {
+    display: block;
+    height: 250px;
+    width: 100%;
+}
+
+.movie-card .card-content {
+    color: white;
+    text-align: center;
+}
+
+.movie-card .card-content h3 {
+    margin: 10px 0;
+    font-size: 1.5em;
+}
+
+.movie-card .card-content p {
+    font-size: 1em;
+    color: #bbb;
+}
+
+a {
+    color: white;
+    font-size: 1.2em;
+    text-decoration: none;
+}
+
+.title {
+    min-height: 50px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #123456;
+}

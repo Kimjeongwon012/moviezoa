@@ -1,0 +1,44 @@
+import React from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import "./Home.css";
+import MovieCard from "../components/MovieCard";
+import {fetchMovies, test} from "../services/api";
+import {useEffect, useState} from "react";
+
+// 전체 프론트엔드 레이아웃 (IMDB 사이트 참고하여 기본 HTML 구조 구현)
+function Home() {
+    const [movies, setMovies] = useState([]);
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        // api.js 의 fetchMovies 를 실행하고 백엔드로부터 받아온 데이터를 movies 에 저장, 오류시 발생시 콘솔에 출력
+        // fetchMovies().then(setMovies).catch(console.error);
+        test().then((data) => setData(data.results)).catch(console.error);
+    }, []);
+
+    console.log(data);
+    // <div className="movieList">
+    //     {movies.slice(0, 10).map((movie) => (
+    //         <MovieCard id={movie.id} title={movie.title} image_url={movie.image_url}/>
+    //     ))}
+    // </div>
+    return (
+        <div>
+            <Header/>
+            <main className="main-container">
+                <div className="moiveRank">
+                    <h3>금주의 영화</h3>
+                    <div className="movieList">
+                        {data.map((movie) => (
+                            <MovieCard key={movie.id} id={movie.id} title={movie.title} image_url={movie.poster_path}/>
+                        ))}
+                    </div>
+                </div>
+            </main>
+            <Footer/>
+        </div>
+    );
+}
+
+export default Home;

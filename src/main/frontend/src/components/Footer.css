@@ -1,0 +1,14 @@
+.footer {
+    background-color: #121212;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 중앙 정렬 */
+    background-color: #123456;
+    max-width: 1280px; /* 최대 너비 제한 */
+    padding: 10px 5%;
+    color: white;
+    margin: 0 auto; /* 화면 중앙 정렬 */
+}

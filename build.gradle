@@ -1,0 +1,99 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.4.1'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'me.jeong'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.mariadb.jdbc:mariadb-java-client:3.1.2'
+    implementation 'com.squareup.okhttp3:okhttp:4.11.0'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    testCompileOnly 'org.projectlombok:lombok:1.18.24'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
+}
+
+repositories {
+    mavenCentral()
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+// React 연동을 위한 설정
+// React 프로젝트가 위치한 디렉토리 경로를 지정합니다.
+def frontendDir = "$projectDir/src/main/frontend"
+
+// 소스 세트 설정: main 소스 세트의 리소스 디렉토리를 정의합니다.
+sourceSets {
+    main {
+        resources {
+            // main 소스 세트의 리소스 디렉토리를 지정합니다.
+            srcDirs = ["$projectDir/src/main/resources"]
+        }
+    }
+}
+
+// processResources 작업이 "copyReactBuildFiles" 작업을 실행하도록 설정합니다.
+processResources {
+    dependsOn "copyReactBuildFiles"
+}
+
+// React 의존성 설치 및 취약점 수정 작업 정의
+task installReact(type: Exec) {
+    // React 프로젝트 디렉토리에서 작업 실행
+    workingDir "$frontendDir"
+    inputs.dir "$frontendDir" // 입력 디렉토리를 React 프로젝트 디렉토리로 설정
+    group = BasePlugin.BUILD_GROUP // 작업 그룹을 "빌드 그룹"으로 설정
+
+    // 운영 체제에 따라 다른 명령어 실행
+    if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')) {
+        // Windows 환경에서는 npm 명령어에 .cmd 확장자 필요
+        commandLine "npm.cmd", "audit", "fix" // 취약점 자동 수정
+        commandLine 'npm.cmd', 'install' // npm 패키지 설치
+    } else {
+        // Windows가 아닌 환경에서는 일반 npm 명령어 사용
+        commandLine "npm", "audit", "fix" // 취약점 자동 수정
+        commandLine 'npm', 'install' // npm 패키지 설치
+    }
+}
+
+// React 빌드 작업 정의
+task buildReact(type: Exec) {
+    dependsOn "installReact" // React 설치 작업 후에 실행
+    workingDir "$frontendDir" // React 프로젝트 디렉토리에서 작업 실행
+    inputs.dir "$frontendDir" // 입력 디렉토리를 React 프로젝트 디렉토리로 설정
+    group = BasePlugin.BUILD_GROUP // 작업 그룹을 "빌드 그룹"으로 설정
+
+    // 운영 체제에 따라 다른 명령어 실행
+    if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')) {
+        // Windows 환경에서는 npm 명령어에 .cmd 확장자 필요
+        commandLine "npm.cmd", "run-script", "build" // React 프로젝트 빌드
+    } else {
+        // Windows가 아닌 환경에서는 일반 npm 명령어 사용
+        commandLine "npm", "run-script", "build" // React 프로젝트 빌드
+    }
+}
+
+// 빌드된 React 파일을 Spring Boot 정적 리소스 디렉토리로 복사하는 작업 정의
+task copyReactBuildFiles(type: Copy) {
+    dependsOn "buildReact" // React 빌드 작업 후에 실행
+    from "$frontendDir/build" // React 빌드 디렉토리에서 파일 복사
+    into "$projectDir/src/main/resources/static" // Spring Boot 정적 리소스 디렉토리에 복사
+}

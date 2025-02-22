@@ -1,0 +1,25 @@
+/* 메인 카드 레이아웃 */
+.main-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.main-container {
+    display: flex;
+    gap: 15px;
+}
+
+.movieList {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* ✅ 한 줄에 5개씩 */
+    gap: 20px; /* 카드 간격 */
+    padding: 20px;
+}
+
+.backendMsg {
+    margin-top: 50px;
+}
