@@ -66,4 +66,8 @@ public class DateUtils {
         }
         return periods;
     }
+
+    public static String convertToString(LocalDate date) {
+        return date.format(formatter);
+    }
 }

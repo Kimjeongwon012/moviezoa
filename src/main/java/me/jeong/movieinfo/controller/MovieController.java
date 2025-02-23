@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,8 +20,13 @@ public class MovieController {
     @Autowired
     private MovieService service;
 
-    @GetMapping
-    public List<Movie> getMovies() {
-        return service.getAllMovies();
+    @GetMapping("/top-popular/{amount}")
+    public List<Movie> getPopularMovies(@PathVariable("amount") int amount) {
+        return service.getPopularMovies(amount);
+    }
+
+    @GetMapping("/{id}")
+    public Movie getMovieById(@PathVariable("id") Long id) {
+        return service.getMovieById(id);
     }
 }

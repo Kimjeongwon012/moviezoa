@@ -35,7 +35,7 @@ public class Movie extends BaseEntity {
     private String title;
     private String original_title;
     private String release_date;
-    private String popularity;
+    private double popularity;
     private double rating;
     private String backdrop_path;
     private String poster_path;
@@ -48,18 +48,5 @@ public class Movie extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "actor_id")
     )
     private Set<Actor> actors = new HashSet<>();
-
-    public Movie(Long id, String overview, List<Integer> genre_ids, String title, String original_title, String release_date, String popularity, double rating, String backdrop_path, String poster_path) {
-        this.id = id;
-        this.overview = overview;
-        this.genre_ids = genre_ids;
-        this.title = title;
-        this.original_title = original_title;
-        this.release_date = release_date;
-        this.popularity = popularity;
-        this.rating = rating;
-        this.backdrop_path = backdrop_path;
-        this.poster_path = poster_path;
-    }
 }
 
