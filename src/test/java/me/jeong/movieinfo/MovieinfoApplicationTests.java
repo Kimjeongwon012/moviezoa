@@ -16,7 +16,6 @@ class MovieinfoApplicationTests {
 
     @Test
     void contextLoads() {
-        tmdbAPI.fetchAndStoreMovies();
     }
 
 }

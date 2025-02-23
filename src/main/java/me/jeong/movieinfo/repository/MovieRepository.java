@@ -13,8 +13,6 @@ import java.util.Set;
 
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Long> {
-
-
     /**
      * 영화 테이블에서 모든 영화의 ID들을 가져온다.
      *

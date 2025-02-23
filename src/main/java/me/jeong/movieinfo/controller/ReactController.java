@@ -27,7 +27,7 @@ public class ReactController {
 
     @GetMapping("/api/test")
     public String test() {
-        return tmdbapi.getMovies();
+        return "";
     }
 
 }

@@ -14,9 +14,7 @@ public class MovieScheduler {
     }
 
     @Scheduled(cron = "0 0 3 * * ?") // 매일 새벽 3시 실행
-    public String syncMovies() {
-        String data = "fail";
-        System.out.println("TMDb API에서 최신 영화 정보 가져오기...");
-        return tmdbapi.getMovies();
+    public void syncMovies() {
+        tmdbapi.fetchAndStoreMovies();
     }
 }

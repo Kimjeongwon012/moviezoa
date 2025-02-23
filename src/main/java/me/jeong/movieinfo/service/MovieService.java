@@ -22,12 +22,6 @@ public class MovieService {
         this.actorRepository = actorRepository;
     }
 
-    public Movie createMovie(Movie movie, Set<Long> actorIds) {
-        Set<Actor> actors = actorRepository.findAllById(actorIds).stream().collect(Collectors.toSet());
-        movie.setActors(actors);
-        return movieRepository.save(movie);
-    }
-
     public List<Movie> getAllMovies() {
         return movieRepository.findAll();
     }

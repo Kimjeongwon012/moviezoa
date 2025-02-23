@@ -1,5 +1,6 @@
 package me.jeong.movieinfo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,28 +8,28 @@ import lombok.Setter;
 import me.jeong.movieinfo.entity.Movie;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true) // JSON의 불필요한 필드를 무시
 public class Actor extends BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-
-    private String birthDate;
-
-    private String nationality;
-
-    private String profileUrl;
+    private String adult;
 
     private String gender;
 
-    private String filmographyUrl; // 필모그래피 페이지 링크 (예: IMDB, Naver Movie)
+    private String known_for_department;
 
-    private Long representativeMovieId; // 대표 작품 (대표 영화 ID)
+    private String name;
+
+    private String popularity;
+
+    private String profile_path;
 }
