@@ -27,6 +27,8 @@ public class MovieController {
 
     @GetMapping("/{id}")
     public Movie getMovieById(@PathVariable("id") Long id) {
+        Movie movie = service.getMovieById(id);
+        log.info(movie.getBackdrop_path());
         return service.getMovieById(id);
     }
 }

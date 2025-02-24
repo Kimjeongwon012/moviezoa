@@ -14,29 +14,31 @@ function MovieDetail() {
     useEffect(() => {
         fetchMovieById(id).then((data) => setMovie(data)).catch(console.error);
     }, [id]);
+    console.log(movie);
 
     return (
         <div>
             <Header/>
             <main className="main-container">
-                <div className="movie-header">
-                    <div className="movie-summary">
-                        <h1 className="movie-title">{movie.title}</h1>
-                        <span className="movie-original-title">{movie.original_title}</span>
-                        <span className="movie-info">{movie.release_date}</span>
+                <div className="main-content">
+                    <div className="movie-header">
+                        <div className="movie-summary">
+                            <h1 className="movie-title">{movie.title}</h1>
+                            <span className="movie-original-title">{movie.original_title}</span>
+                            <span className="movie-info">{movie.release_date}</span>
+                        </div>
+                        <div className="movie-rating">
+                            {movie.rating}
+                        </div>
                     </div>
-                    <div className="movie-rating">
-                        {movie.rating}
+                    {/*포스터*/}
+                    <div className="movie-content">
+                        <img src={movie.poster_path} alt={movie.title}/>
                     </div>
-                </div>
-                {/*포스터*/}
-                <div className="movie-content">
+                    {/*영화 정보*/}
+                    <div className="movie-info-seection">
 
-
-                </div>
-                {/*영화 정보*/}
-                <div className="movie-info-seection">
-
+                    </div>
                 </div>
             </main>
             <Footer/>

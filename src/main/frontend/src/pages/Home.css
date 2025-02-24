@@ -5,14 +5,15 @@
     background-color: #121212;
     background-image: url("https://www.transparenttextures.com/patterns/brick-wall-dark.png");
     background-repeat: repeat;
+    min-height: 1280px;
 }
 
 .main-content {
-    display: flex;
     padding: 20px;
     margin: 0 auto;
-    justify-content: center;
-    max-width: 1400px;
+    width: 1200px;
+    background: radial-gradient(ellipse at center, rgba(18, 18, 18, 1) 0%, rgba(18, 18, 18, 0.8) 30%, rgba(18, 18, 18, 0.6) 60%, rgba(18, 18, 18, 0.4) 80%, rgba(18, 18, 18, 0.2) 100%);
+    min-height: 100%;
 }
 
 .movieList {

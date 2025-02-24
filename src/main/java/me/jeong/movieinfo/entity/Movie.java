@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import me.jeong.movieinfo.component.Movie_Constants;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -17,10 +19,17 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true) // JSON의 불필요한 필드를 무시
 public class Movie extends BaseEntity {
+    @Transient // JPA 관리 대상 제외
+    private final String base_image_url;
+
+    public Movie() {
+        this.base_image_url = Movie_Constants.BaseImageUrl;
+        System.out.println(base_image_url);
+    }
+
     @Id
     private Long id;
 
@@ -39,6 +48,15 @@ public class Movie extends BaseEntity {
     private double rating;
     private String backdrop_path;
     private String poster_path;
+
+    public String getBackdrop_path() {
+        return base_image_url + backdrop_path;
+    }
+
+    public String getPoster_path() {
+        return base_image_url + poster_path;
+    }
+
 
     // 배우와 다대다 관계
     @ManyToMany

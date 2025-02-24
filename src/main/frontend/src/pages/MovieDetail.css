@@ -1,7 +1,3 @@
-.main-container {
-    display: block;
-}
-
 .movie-header {
     display: flex;
     justify-content: left;
