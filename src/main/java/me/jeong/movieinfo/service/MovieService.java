@@ -1,24 +1,17 @@
 package me.jeong.movieinfo.service;
 
-import me.jeong.movieinfo.component.DateUtils;
-import me.jeong.movieinfo.controller.MovieController;
-import me.jeong.movieinfo.entity.Actor;
-import me.jeong.movieinfo.entity.Movie;
+import me.jeong.movieinfo.utils.DateUtils;
+import me.jeong.movieinfo.domain.Movie;
 import me.jeong.movieinfo.repository.ActorRepository;
 import me.jeong.movieinfo.repository.MovieRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.Map;
 
 @Service
 public class MovieService {
@@ -39,8 +32,10 @@ public class MovieService {
         return movies;
     }
 
-    public Movie getMovieById(Long id) {
-        return movieRepository.findById(id)
+    public List<Map<String, Object>> getMovieById(Long id) {
+        movieRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("존재하지 않는 영화를 요청함"));
+
+        return
     }
 }

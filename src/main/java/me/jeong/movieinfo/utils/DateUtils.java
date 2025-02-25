@@ -1,4 +1,4 @@
-package me.jeong.movieinfo.component;
+package me.jeong.movieinfo.utils;
 
 import org.springframework.stereotype.Component;
 

@@ -1,7 +1,7 @@
-package me.jeong.movieinfo.mapper;
+package me.jeong.movieinfo.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import me.jeong.movieinfo.entity.Movie;
+import me.jeong.movieinfo.domain.Movie;
 
 import java.util.Map;
 

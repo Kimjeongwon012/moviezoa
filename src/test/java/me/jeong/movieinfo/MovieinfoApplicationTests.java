@@ -1,8 +1,7 @@
 package me.jeong.movieinfo;
 
-import lombok.extern.java.Log;
-import me.jeong.movieinfo.component.DateUtils;
-import me.jeong.movieinfo.service.TmdbAPI;
+import me.jeong.movieinfo.utils.DateUtils;
+import me.jeong.movieinfo.external.TmdbAPI;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

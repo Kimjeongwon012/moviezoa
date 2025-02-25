@@ -41,7 +41,7 @@ a {
 .title {
     font-family: 'SB Aggro', sans-serif;
     font-weight: bold;
-    text-align: left;
+    justify-content: center;
     min-height: 45px;
     display: flex;
     color: #ffffff;

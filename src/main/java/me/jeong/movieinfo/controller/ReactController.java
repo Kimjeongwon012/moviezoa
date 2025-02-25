@@ -2,7 +2,7 @@ package me.jeong.movieinfo.controller;
 
 import java.util.Date;
 
-import me.jeong.movieinfo.service.TmdbAPI;
+import me.jeong.movieinfo.external.TmdbAPI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.CrossOrigin;

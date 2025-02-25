@@ -1,6 +1,6 @@
 package me.jeong.movieinfo.controller;
 
-import me.jeong.movieinfo.entity.Movie;
+import me.jeong.movieinfo.domain.Movie;
 import me.jeong.movieinfo.service.MovieService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

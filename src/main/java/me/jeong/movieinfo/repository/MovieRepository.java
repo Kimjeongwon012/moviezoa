@@ -1,17 +1,12 @@
 package me.jeong.movieinfo.repository;
 
-import jakarta.persistence.Column;
-import lombok.Value;
-import me.jeong.movieinfo.entity.Movie;
-import org.springframework.data.annotation.CreatedDate;
+import me.jeong.movieinfo.domain.Movie;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 

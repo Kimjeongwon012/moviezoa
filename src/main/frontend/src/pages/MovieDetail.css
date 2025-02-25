@@ -31,4 +31,27 @@
     margin: 0px
 }
 
+.movie-content {
+    display: flex;
+    gap: 25px;
+    margin-top: 10px;
+}
 
+.movie-poster {
+    width: 280px;
+    height: 400px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.movie-infomation {
+    width: 70%;
+    color: white;
+    max-height: 400px;
+}
+
+.movie-infomation hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #ccc, transparent);
+}

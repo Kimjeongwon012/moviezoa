@@ -1,14 +1,12 @@
-package me.jeong.movieinfo.service;
+package me.jeong.movieinfo.external;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import me.jeong.movieinfo.component.DateUtils;
+import me.jeong.movieinfo.service.ActorMapper;
+import me.jeong.movieinfo.service.MovieMapper;
+import me.jeong.movieinfo.utils.DateUtils;
 import me.jeong.movieinfo.controller.MovieController;
-import me.jeong.movieinfo.entity.Actor;
-import me.jeong.movieinfo.entity.Movie;
-import me.jeong.movieinfo.mapper.ActorMapper;
-import me.jeong.movieinfo.mapper.MovieMapper;
+import me.jeong.movieinfo.domain.Actor;
+import me.jeong.movieinfo.domain.Movie;
 import me.jeong.movieinfo.repository.ActorRepository;
 import me.jeong.movieinfo.repository.MovieRepository;
 import okhttp3.OkHttpClient;
@@ -17,11 +15,7 @@ import okhttp3.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.io.IOException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -44,6 +38,8 @@ public class TmdbAPI {
         this.movieRepository = movieRepository;
         this.actorRepository = actorRepository;
     }
+
+    public
 
     public void fetchAndStoreActors() {
         List<Actor> actorList = new ArrayList<>();

@@ -1,6 +1,6 @@
 package me.jeong.movieinfo.repository;
 
-import me.jeong.movieinfo.entity.Actor;
+import me.jeong.movieinfo.domain.Actor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

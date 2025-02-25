@@ -1,4 +1,4 @@
-package me.jeong.movieinfo.entity;
+package me.jeong.movieinfo.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;

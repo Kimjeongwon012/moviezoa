@@ -1,6 +1,6 @@
 package me.jeong.movieinfo.service;
 
-import me.jeong.movieinfo.service.TmdbAPI;
+import me.jeong.movieinfo.external.TmdbAPI;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 

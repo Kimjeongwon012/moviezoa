@@ -1,0 +1,15 @@
+.genre-button {
+    background-color: rgba(255, 255, 255, 0.01); /* 반투명 배경 */
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 6px 12px;
+    border-radius: 20px; /* 둥근 버튼 */
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.genre-button:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* 호버 효과 */
+}
