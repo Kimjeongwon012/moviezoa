@@ -1,5 +1,8 @@
 package me.jeong.movieinfo.service;
 
+import me.jeong.movieinfo.external.TmdbAPI;
+import me.jeong.movieinfo.service.dto.MovieDTO;
+import me.jeong.movieinfo.service.dto.MovieImageDTO;
 import me.jeong.movieinfo.utils.DateUtils;
 import me.jeong.movieinfo.domain.Movie;
 import me.jeong.movieinfo.repository.ActorRepository;
@@ -17,12 +20,12 @@ import java.util.Map;
 public class MovieService {
     private static final Logger log = LoggerFactory.getLogger(MovieService.class);
     private final MovieRepository movieRepository;
-    private final ActorRepository actorRepository;
+    private final TmdbAPI tmdbAPI;
 
 
-    public MovieService(MovieRepository movieRepository, ActorRepository actorRepository) {
+    public MovieService(MovieRepository movieRepository, TmdbAPI tmdbAPI) {
         this.movieRepository = movieRepository;
-        this.actorRepository = actorRepository;
+        this.tmdbAPI = tmdbAPI;
     }
 
     public List<Movie> getPopularMovies(int amount) {
@@ -32,10 +35,7 @@ public class MovieService {
         return movies;
     }
 
-    public List<Map<String, Object>> getMovieById(Long id) {
-        movieRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("존재하지 않는 영화를 요청함"));
-
-        return
+    public MovieDTO getMovieDetails(Long movieId) {
+        return tmdbAPI.fetchMovieDetails(movieId);
     }
 }

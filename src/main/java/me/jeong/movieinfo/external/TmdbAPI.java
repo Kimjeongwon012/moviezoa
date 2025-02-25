@@ -1,8 +1,10 @@
 package me.jeong.movieinfo.external;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import me.jeong.movieinfo.service.ActorMapper;
-import me.jeong.movieinfo.service.MovieMapper;
+import me.jeong.movieinfo.service.mapper.ActorMapper;
+import me.jeong.movieinfo.service.mapper.MovieDtoMapper;
+import me.jeong.movieinfo.service.mapper.MovieMapper;
+import me.jeong.movieinfo.service.dto.MovieDTO;
 import me.jeong.movieinfo.utils.DateUtils;
 import me.jeong.movieinfo.controller.MovieController;
 import me.jeong.movieinfo.domain.Actor;
@@ -15,6 +17,7 @@ import okhttp3.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +29,6 @@ public class TmdbAPI {
     private static final Logger log = LoggerFactory.getLogger(MovieController.class);
     private static final int TOTAL_REQUEST_MONTHS = 6;
     private static final int BATCH_REQUEST_MONTHS = 2;
-    private static final String BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w500";
     private static final String API_URL = "https://api.themoviedb.org/3/";
     private static final String API_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiNjg2YmQ3ZDc5ZjI5YjI0ZmIzODk3OGI1YTk2MWNkZSIsIm5iZiI6MTczOTk1OTQ4MS42MDE5OTk4LCJzdWIiOiI2N2I1YWNiOTIxNTI2MzhmNWVlM2MyMDkiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.qgOWsfIxE4IlUZaobU-vDr9yQ36ire_fLZgoO3Wyf04";
     private final ActorRepository actorRepository;
@@ -39,7 +41,31 @@ public class TmdbAPI {
         this.actorRepository = actorRepository;
     }
 
-    public
+    public MovieDTO fetchMovieDetails(Long movieId) {
+        try {
+            String url = UriComponentsBuilder.fromHttpUrl(API_URL + "movie/" + movieId)
+                    .queryParam("append_to_response", "credits,images,genres,videos")
+                    .queryParam("language", "ko-KR")
+                    .queryParam("include_image_language", "null")
+                    .toUriString();
+            Request request = new Request.Builder()
+                    .url(url)
+                    .get()
+                    .addHeader("accept", "application/json")
+                    .addHeader("Authorization", "Bearer " + API_KEY)
+                    .build();
+
+            Response response = client.newCall(request).execute();
+            String responseBody = response.body().string();
+            response.close();
+            log.info(responseBody);
+            MovieDTO dto = MovieDtoMapper.mapToMovieDTO(responseBody);
+            return dto;
+        } catch (Exception e) {
+            log.info("영화 상세 정보를 가져오다가 오류 발생", e);
+        }
+        return null;
+    }
 
     public void fetchAndStoreActors() {
         List<Actor> actorList = new ArrayList<>();

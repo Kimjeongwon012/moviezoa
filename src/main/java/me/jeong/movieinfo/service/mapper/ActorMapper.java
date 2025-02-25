@@ -1,4 +1,4 @@
-package me.jeong.movieinfo.service;
+package me.jeong.movieinfo.service.mapper;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import me.jeong.movieinfo.domain.Actor;
