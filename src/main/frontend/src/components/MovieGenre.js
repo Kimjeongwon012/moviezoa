@@ -1,9 +1,9 @@
 import React from "react";
 import "./MovieGenre.css";
 
-const MovieGenre = ({genre}) => (
-    <a href={`/movies/genre/${genre}`}>
-        <button className="genre-button">{genre}</button>
+const MovieGenre = ({id, name}) => (
+    <a href={`/movies/genre/${id}`}>
+        <button className="genre-button">{name}</button>
     </a>
 );
 

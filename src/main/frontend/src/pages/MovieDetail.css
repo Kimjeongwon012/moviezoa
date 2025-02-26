@@ -1,3 +1,25 @@
+.skeleton-container {
+    gap: 10px;
+}
+
+.skeleton-header {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.skeleton-content {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.skeleton-infomation {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
 .movie-header {
     display: flex;
     justify-content: left;
@@ -47,7 +69,7 @@
 .movie-infomation {
     width: 70%;
     color: white;
-    max-height: 400px;
+    height: 425px;
 }
 
 .movie-infomation hr {
@@ -55,3 +77,115 @@
     height: 1px;
     background: linear-gradient(to right, transparent, #ccc, transparent);
 }
+
+.movie-genres {
+    display: flex;
+    gap: 10px;
+}
+
+.movie-overview {
+    font-size: 17px;
+    height: auto;
+    /*overflow: scroll;*/
+    display: -webkit-box;
+    -webkit-line-clamp: 7; /* 최대 2줄 표시 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 25%;
+    margin-bottom: 50px;
+}
+
+.rating-container {
+    display: flex;
+    gap: 30px;
+    padding: 25px 20px;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.rating-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* 작은 라벨 스타일 */
+.rating-label {
+    font-size: 15px;
+    color: #aaa;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* 점수 스타일 */
+.rating-value {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* 별 아이콘 */
+.star-icon {
+    color: gold;
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.rate-icon {
+    color: #6495ED;
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+/* IMDb 점수 */
+.rating-score {
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* /10 스타일 */
+.rating-out-of {
+    font-size: 14px;
+    color: #aaa;
+    margin-left: 2px;
+}
+
+/* 투표 수 */
+.rating-count {
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 3px;
+}
+
+/* Rate 버튼 */
+.rate-text {
+    font-size: 16px;
+    color: #6495ED;
+    cursor: pointer;
+}
+
+/* Popularity 스타일 */
+.popularity-icon {
+    color: red;
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.popularity-rank {
+    font-size: 20px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.popularity-change {
+    font-size: 14px;
+    color: #aaa;
+    margin-left: 5px;
+}
+
+
+
+

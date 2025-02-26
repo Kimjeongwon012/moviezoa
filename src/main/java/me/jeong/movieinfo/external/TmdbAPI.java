@@ -2,7 +2,6 @@ package me.jeong.movieinfo.external;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import me.jeong.movieinfo.service.mapper.ActorMapper;
-import me.jeong.movieinfo.service.mapper.MovieDtoMapper;
 import me.jeong.movieinfo.service.mapper.MovieMapper;
 import me.jeong.movieinfo.service.dto.MovieDTO;
 import me.jeong.movieinfo.utils.DateUtils;
@@ -59,7 +58,7 @@ public class TmdbAPI {
             String responseBody = response.body().string();
             response.close();
             log.info(responseBody);
-            MovieDTO dto = MovieDtoMapper.mapToMovieDTO(responseBody);
+            MovieDTO dto = MovieMapper.mapToMovieDTO(responseBody);
             return dto;
         } catch (Exception e) {
             log.info("영화 상세 정보를 가져오다가 오류 발생", e);

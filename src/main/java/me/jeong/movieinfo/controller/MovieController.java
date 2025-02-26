@@ -25,8 +25,14 @@ public class MovieController {
     private MovieService movieService;
 
     @GetMapping("/top-popular/{amount}")
-    public List<Movie> getPopularMovies(@PathVariable("amount") int amount) {
-        return movieService.getPopularMovies(amount);
+    public ResponseEntity<List<MovieDTO>> getPopularMovies(@PathVariable("amount") int amount) {
+        try {
+            List<MovieDTO> movies = movieService.getPopularMovies(amount);
+            return ResponseEntity.ok(movies);
+        } catch (Exception e) {
+            log.info(e.getMessage());
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(null);
+        }
     }
 
     @GetMapping("/{id}")

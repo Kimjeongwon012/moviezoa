@@ -2,10 +2,9 @@ package me.jeong.movieinfo.service;
 
 import me.jeong.movieinfo.external.TmdbAPI;
 import me.jeong.movieinfo.service.dto.MovieDTO;
-import me.jeong.movieinfo.service.dto.MovieImageDTO;
+import me.jeong.movieinfo.service.mapper.MovieMapper;
 import me.jeong.movieinfo.utils.DateUtils;
 import me.jeong.movieinfo.domain.Movie;
-import me.jeong.movieinfo.repository.ActorRepository;
 import me.jeong.movieinfo.repository.MovieRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class MovieService {
@@ -28,11 +26,12 @@ public class MovieService {
         this.tmdbAPI = tmdbAPI;
     }
 
-    public List<Movie> getPopularMovies(int amount) {
+    public List<MovieDTO> getPopularMovies(int amount) {
         String oneMonthAgo = DateUtils.convertToString(LocalDate.now().minusMonths(1));
         String oneMonthLater = DateUtils.convertToString(LocalDate.now().plusMonths(1));
         List<Movie> movies = movieRepository.findMostPopularMovies(oneMonthAgo, oneMonthLater, PageRequest.of(0, amount));
-        return movies;
+        List<MovieDTO> dtoMovies = MovieMapper.toDtoList(movies);
+        return dtoMovies;
     }
 
     public MovieDTO getMovieDetails(Long movieId) {

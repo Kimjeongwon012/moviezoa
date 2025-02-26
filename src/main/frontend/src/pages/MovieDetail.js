@@ -7,65 +7,124 @@ import {useParams} from "react-router-dom";
 import {fetchMovieById} from "../services/movieService";
 import MovieGenre from "../components/MovieGenre";
 import ActorCard from "../components/ActorCard";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import SkeletonCard from "../components/Skeleton";
 
 // 전체 프론트엔드 레이아웃 (IMDB 사이트 참고하여 기본 HTML 구조 구현)
 function MovieDetail() {
     const {id} = useParams();
     const [movie, setMovie] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetchMovieById(id).then((data) => setMovie(data)).catch(console.error);
+        fetchMovieById(id).then((data) => {
+            setMovie(data);
+        }).catch((error) => {
+            console.error(error);
+        }).finally(() => setIsLoading(false))
     }, [id]);
+
     console.log(movie);
+    if (isLoading) {
+        return (
+            <div>
+                <Header/>
+                <main className="main-container">
+                    <div className="main-content">
+                        <div className="skeleton-container">
+                            <div className="skeleton-header">
+                                <SkeletonCard width="290" height="50"/>
+                                <SkeletonCard width="290" height="15"/>
+                            </div>
+                            <div className="skeleton-content">
+                                <SkeletonCard width="300" height="350"/>
+                                <div className="skeleton-infomation">
+                                    <SkeletonCard width="900" height="215"/>
+                                    <SkeletonCard width="900" height="120"/>
+                                </div>
+                            </div>
 
-    return (
-        <div>
-            <Header/>
-            <main className="main-container">
-                <div className="main-content">
-                    <div className="movie-header">
-                        <div className="movie-summary">
-                            {/*제목*/}
-                            <h1 className="movie-title">{movie.title}</h1>
-                            {/*원제*/}
-                            <span className="movie-original-title">{movie.original_title}</span>
-                            {/*개봉일*/}
-                            <span className="movie-info">{movie.release_date}</span>
                         </div>
-                        <div className="movie-rating">
-                            {movie.rating}
+                        <div>
                         </div>
-                    </div>
-                    <div className="movie-content">
-                        {/*포스터*/}
-                        <img className="movie-poster" src={movie.poster_path} alt={movie.title}/>
-                        <div className="movie-infomation">
-                            {/*장르 태그*/}
-                            <div className="movie-genre">
-                                <MovieGenre genre="액션"/>
-                            </div>
-                            <hr/>
-                            {/*영화 시놉시스*/}
-                            <p className="movie-overview">
-                                {movie.overview}
-                            </p>
-                            <hr/>
-                            {/*출연진*/}
-                            <div className="movie-actors">
-                                <ActorCard key={movie.id}/>
-                            </div>
-                            <hr/>
+                        <div>
+
                         </div>
-                    </div>
-                    {/*영화 정보*/}
-                    <div className="movie-info-seection">
 
                     </div>
-                </div>
-            </main>
-            <Footer/>
-        </div>
-    );
+                </main>
+                <Footer/>
+            </div>
+        );
+    } else {
+        return (
+            <div>
+                <Header/>
+                <main className="main-container">
+                    <div className="main-content">
+                        <div className="movie-header">
+                            <div className="movie-summary">
+                                <h1 className="movie-title">{movie.title}</h1>
+                                <span className="movie-original-title">{movie.original_title}</span>
+                                <span className="movie-info">{movie.release_date}</span>
+                            </div>
+                            <div className="movie-rating">{movie.rating}</div>
+                        </div>
+                        <div className="movie-content">
+                            <img className="movie-poster" src={movie.poster_path} alt={movie.title}/>
+                            <div className="movie-infomation">
+                                <div className="movie-genres">
+                                    {movie.genres.map((genre) => (
+                                        <MovieGenre key={genre.id} id={genre.id} name={genre.name}/>
+                                    ))}
+                                </div>
+                                <hr/>
+                                <h3>║줄거리</h3>
+                                <p className="movie-overview">{movie.overview}</p>
+                                <hr/>
+                                <div className="rating-container">
+
+                                    <div className="rating-box">
+                                        <span className="rating-label">IMDb RATING</span>
+                                        <div className="rating-value">
+                                            <span className="star-icon">⭐</span>
+                                            <span className="rating-score">6.1</span><span
+                                            className="rating-out-of">/10</span>
+                                        </div>
+                                        <span className="rating-count">55K</span>
+                                    </div>
+
+                                    <div className="rating-box">
+                                        <span className="rating-label">YOUR RATING</span>
+                                        <div className="rating-value">
+                                            <span className="rate-icon">⭐</span>
+                                            <span className="rate-text">Rate</span>
+                                        </div>
+                                    </div>
+
+                                    <div className="rating-box">
+                                        <span className="rating-label">POPULARITY</span>
+                                        <div className="rating-value">
+                                            <span className="popularity-icon">🔥</span>
+                                            <span className="popularity-rank">2</span>
+                                            <span className="popularity-change">-1</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr/>
+                            </div>
+                        </div>
+                        <div className="movie-actors">
+                            <ActorCard key={movie.id}/>
+                        </div>
+                    </div>
+                </main>
+                <Footer/>
+            </div>
+        );
+    }
 }
 
 export default MovieDetail;
+
