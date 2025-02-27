@@ -1,0 +1,22 @@
+.movie-actor {
+    color: white;
+}
+
+.movie-actor-carousel-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.movie-actor-carousel {
+    display: flex;
+    overflow: hidden;
+    gap: 10px;
+}
+
+.movie-actor-list {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* 애니메이션 적용 */
+    gap: 10px;
+}

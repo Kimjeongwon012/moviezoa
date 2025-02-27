@@ -58,6 +58,7 @@ public class TmdbAPI {
             String responseBody = response.body().string();
             response.close();
             log.info(responseBody);
+
             MovieDTO dto = MovieMapper.mapToMovieDTO(responseBody);
             return dto;
         } catch (Exception e) {

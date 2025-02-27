@@ -1,21 +1,22 @@
 import React from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../components/Common/Header";
+import Footer from "../components/Common/Footer";
 import "./MovieDetail.css";
 import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {fetchMovieById} from "../services/movieService";
-import MovieGenre from "../components/MovieGenre";
+import MovieGenre from "../components/Movie/MovieGenre";
 import ActorCard from "../components/ActorCard";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 import SkeletonCard from "../components/Skeleton";
+import {FaLessThan, FaGreaterThan} from "react-icons/fa";
+import MovieCastCarousel from "../components/Movie/MovieCastCarousel";
 
 // 전체 프론트엔드 레이아웃 (IMDB 사이트 참고하여 기본 HTML 구조 구현)
 function MovieDetail() {
     const {id} = useParams();
     const [movie, setMovie] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+
 
     useEffect(() => {
         fetchMovieById(id).then((data) => {
@@ -92,7 +93,6 @@ function MovieDetail() {
                                             <span className="rating-score">6.1</span><span
                                             className="rating-out-of">/10</span>
                                         </div>
-                                        <span className="rating-count">55K</span>
                                     </div>
 
                                     <div className="rating-box">
@@ -115,8 +115,11 @@ function MovieDetail() {
                                 <hr/>
                             </div>
                         </div>
-                        <div className="movie-actors">
-                            <ActorCard key={movie.id}/>
+                        <div className="movie-content-container">
+                            <div className="movie-actor-container">
+                                <h style={{color: "#ffffff"}}>║출연진</h>
+                                <MovieCastCarousel key={movie.id} casts={movie.credits.cast}/>
+                            </div>
                         </div>
                     </div>
                 </main>

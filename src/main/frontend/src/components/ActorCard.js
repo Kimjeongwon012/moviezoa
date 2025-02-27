@@ -1,23 +1,22 @@
 import React from "react";
+import "./ActorCard.css";
 
-const actors = [
-    {name: "Ben Whishaw", role: "Paddington (Voice)", img: "URL"},
-    {name: "Hugh Bonneville", role: "Henry Brown", img: "URL"},
-    {name: "Sally Hawkins", role: "Mary Brown", img: "URL"},
-];
-
-export default function ActorCard() {
+export default function ActorCard({id, name, character, profilePath}) {
     return (
-        <div className="overflow-x-auto whitespace-nowrap p-4">
-            <div className="flex space-x-4">
-                {actors.map((actor, index) => (
-                    <div key={index} className="bg-white p-4 rounded-2xl shadow-md text-center min-w-[200px]">
-                        <img src={actor.img} alt={actor.name} className="w-full h-40 object-cover rounded-lg"/>
-                        <h2 className="text-lg font-bold mt-2">{actor.name}</h2>
-                        <p className="text-sm text-gray-500">{actor.role}</p>
+        <a href={`/movies/credit/${id}`}>
+            <div className="actor-card-container">
+                <div className="actor-image">
+                    <img width="120px" height="120px" src={profilePath} alt={name}/>
+                </div>
+                <div className="actor-info">
+                    <div className="actor-name">
+                        <span>{name}</span>
                     </div>
-                ))}
+                    <div className="actor-role">
+                        <span>{character}</span>
+                    </div>
+                </div>
             </div>
-        </div>
+        </a>
     );
 }

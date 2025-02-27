@@ -1,8 +1,8 @@
 import React from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../components/Common/Header";
+import Footer from "../components/Common/Footer";
 import "./Home.css";
-import MovieCard from "../components/MovieCard";
+import MovieCard from "../components/Movie/MovieCard";
 import {fetchMostPopularMovies} from "../services/movieService";
 import {useEffect, useState} from "react";
 
