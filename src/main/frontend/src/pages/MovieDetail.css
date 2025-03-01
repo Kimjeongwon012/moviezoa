@@ -187,8 +187,10 @@
 }
 
 .movie-content-container {
-    margin-top: 10px;
+    margin-top: 75px;
 }
 
-
+.movie-actor-container {
+    display: block;
+}
 

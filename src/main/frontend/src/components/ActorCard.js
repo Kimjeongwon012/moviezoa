@@ -1,10 +1,10 @@
 import React from "react";
 import "./ActorCard.css";
 
-export default function ActorCard({id, name, character, profilePath}) {
+export default function ActorCard({id, name, character, profilePath, cardWidth}) {
     return (
         <a href={`/movies/credit/${id}`}>
-            <div className="actor-card-container">
+            <div className="actor-card-container" style={{maxWidth: cardWidth}}>
                 <div className="actor-image">
                     <img width="120px" height="120px" src={profilePath} alt={name}/>
                 </div>

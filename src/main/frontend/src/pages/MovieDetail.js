@@ -115,9 +115,10 @@ function MovieDetail() {
                                 <hr/>
                             </div>
                         </div>
+                        
                         <div className="movie-content-container">
                             <div className="movie-actor-container">
-                                <h style={{color: "#ffffff"}}>║출연진</h>
+                                <h3 style={{color: "#ffffff", marginBottom: 25}}>║출연진</h3>
                                 <MovieCastCarousel key={movie.id} casts={movie.credits.cast}/>
                             </div>
                         </div>

@@ -33,9 +33,9 @@ public class CastDTO {
     public String getProfilePath() {
         if (profilePath == null) {
             if (gender == 2) {
-                return "/api/actors/default-profile/1";
+                return "/api/actors/default-profile/2";
             } else if (gender == 1) {
-                return "/api/actors/default-profile/0";
+                return "/api/actors/default-profile/1";
             } else {
                 return "/api/actors/default-profile/1";
             }
