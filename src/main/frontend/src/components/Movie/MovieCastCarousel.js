@@ -20,15 +20,13 @@ function MovieCastCarousel({casts}) {
     const handleBtnRightClick = (e) => {
         let x = scrollX - Math.round(window.innerWidth / 2);
         let end = casts.length * cardWidth;
-        console.log(window.innerWidth, x, end);
-        if (window.innerWidth >= end) {
-            x = 0;
-        } else if (x > end) {
-            x = window.innerWidth - end;
+        console.log(window.innerWidth, x);
+        if (x * (-1) > end) {
+            x = scrollX;
         }
         setScrollX(x);
     };
-    // TODO : 캐러셀 이동하는거 로직 완성
+    
     return (
         <div className="movie-actor-carousel-container">
             <div className="movie-actor-carousel-button-left">
