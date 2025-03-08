@@ -49,3 +49,10 @@
     height: 18px;
     background-color: #d1d5db;
 }
+
+.skeleton-casts {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    gap: 30px;
+}

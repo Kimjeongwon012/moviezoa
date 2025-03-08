@@ -45,14 +45,11 @@ function MovieDetail() {
                                     <SkeletonCard width="900" height="120"/>
                                 </div>
                             </div>
-
+                            <div className="skeleton-casts">
+                                <SkeletonCard width="1200" height="225"/>
+                                <SkeletonCard width="1200" height="500"/>
+                            </div>
                         </div>
-                        <div>
-                        </div>
-                        <div>
-
-                        </div>
-
                     </div>
                 </main>
                 <Footer/>
@@ -115,7 +112,7 @@ function MovieDetail() {
                                 <hr/>
                             </div>
                         </div>
-                        
+
                         <div className="movie-content-container">
                             <div className="movie-actor-container">
                                 <h3 style={{color: "#ffffff", marginBottom: 25}}>║출연진</h3>
