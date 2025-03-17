@@ -46,6 +46,8 @@ public class TmdbAPI {
                     .queryParam("append_to_response", "credits,images,genres,videos")
                     .queryParam("language", "ko-KR")
                     .queryParam("include_image_language", "null")
+                    .queryParam("region", "KR")
+                    .queryParam("with_release_type", "3")
                     .toUriString();
             Request request = new Request.Builder()
                     .url(url)
@@ -57,7 +59,7 @@ public class TmdbAPI {
             Response response = client.newCall(request).execute();
             String responseBody = response.body().string();
             response.close();
-            log.info(responseBody);
+            log.info(url);
 
             MovieDTO dto = MovieMapper.mapToMovieDTO(responseBody);
             return dto;

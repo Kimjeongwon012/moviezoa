@@ -29,6 +29,7 @@ public class MovieService {
     public List<MovieDTO> getPopularMovies(int amount) {
         String oneMonthAgo = DateUtils.convertToString(LocalDate.now().minusMonths(1));
         String oneMonthLater = DateUtils.convertToString(LocalDate.now().plusMonths(1));
+        System.out.println(oneMonthAgo);
         List<Movie> movies = movieRepository.findMostPopularMovies(oneMonthAgo, oneMonthLater, PageRequest.of(0, amount));
         List<MovieDTO> dtoMovies = MovieMapper.toDtoList(movies);
         return dtoMovies;
