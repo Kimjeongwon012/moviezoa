@@ -43,11 +43,9 @@ public class TmdbAPI {
     public MovieDTO fetchMovieDetails(Long movieId) {
         try {
             String url = UriComponentsBuilder.fromHttpUrl(API_URL + "movie/" + movieId)
-                    .queryParam("append_to_response", "credits,images,genres,videos")
+                    .queryParam("append_to_response", "credits,images,genres,videos,release_dates")
                     .queryParam("language", "ko-KR")
                     .queryParam("include_image_language", "null")
-                    .queryParam("region", "KR")
-                    .queryParam("with_release_type", "3")
                     .toUriString();
             Request request = new Request.Builder()
                     .url(url)
