@@ -15,6 +15,7 @@ public class Startup {
 
     @PostConstruct
     public void init() {
-        tmdbapi.fetchAndStoreMovies();
+        // 서버 시작시 너무 많은 부하
+//        tmdbapi.fetchAndStoreMovies();
     }
 }
