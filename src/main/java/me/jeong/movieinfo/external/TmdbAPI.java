@@ -57,7 +57,6 @@ public class TmdbAPI {
             Response response = client.newCall(request).execute();
             String responseBody = response.body().string();
             response.close();
-            log.info(url);
 
             MovieDTO dto = MovieMapper.mapToMovieDTO(responseBody);
             return dto;

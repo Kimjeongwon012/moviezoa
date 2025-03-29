@@ -10,6 +10,8 @@ import ActorCard from "../components/ActorCard";
 import SkeletonCard from "../components/Skeleton";
 import {FaLessThan, FaGreaterThan} from "react-icons/fa";
 import MovieCastCarousel from "../components/Movie/MovieCastCarousel";
+import "lite-youtube-embed/src/lite-yt-embed.css";
+import LiteYouTubePlayer from "../components/Movie/LiteYouTubePlayer";
 
 // 전체 프론트엔드 레이아웃 (IMDB 사이트 참고하여 기본 HTML 구조 구현)
 function MovieDetail() {
@@ -115,9 +117,20 @@ function MovieDetail() {
 
                         <div className="movie-content-container">
                             <div className="movie-actor-container">
-                                <h3 style={{color: "#ffffff", marginBottom: 25}}>║출연진</h3>
+                                <h2 style={{color: "#ffffff", marginBottom: 25}}>║출연진</h2>
                                 <MovieCastCarousel key={movie.id} casts={movie.credits.cast}/>
                             </div>
+                            <h2 style={{color: "#ffffff", marginTop: 50, marginBottom: 25}}>║트레일러</h2>
+                            <div className="movie-trailer-container">
+                                {movie.videos?.results?.slice(0, 2).map((trailer) => (
+                                    trailer ? (
+                                        <LiteYouTubePlayer key={trailer.key} data={trailer}/>
+                                    ) : (
+                                        <h1 style={{color: '#ffffff'}}>출연진 정보가 제공되지 않았습니다.</h1>
+                                    )
+                                ))}
+                            </div>
+                            <h2 style={{color: "#ffffff", marginTop: 50, marginBottom: 25}}>║스틸컷</h2>
                         </div>
                     </div>
                 </main>

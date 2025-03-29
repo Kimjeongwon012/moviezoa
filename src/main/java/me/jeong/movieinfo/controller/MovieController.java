@@ -30,7 +30,6 @@ public class MovieController {
             List<MovieDTO> movies = movieService.getPopularMovies(amount);
             return ResponseEntity.ok(movies);
         } catch (Exception e) {
-            log.info(e.getMessage());
             return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(null);
         }
     }

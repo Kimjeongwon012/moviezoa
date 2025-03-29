@@ -1,5 +1,5 @@
 import React from "react";
-
+import "lite-youtube-embed/src/lite-yt-embed.css";
 import axios from "axios";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Home from "./pages/Home";

@@ -35,11 +35,10 @@ public class ActorController {
         try {
             Resource resource = new ClassPathResource("static" + url);
             byte[] imageBytes = Files.readAllBytes(resource.getFile().toPath());
-            log.info(resource.getURL().toString());
 
             return new ResponseEntity<>(imageBytes, headers, HttpStatus.OK);
         } catch (IOException e) {
-            log.info(e.getMessage());
+            log.info("기본 프로필 사진을 가져오다가 오류 발생");
         }
 
         return new ResponseEntity<>(null, headers, HttpStatus.SERVICE_UNAVAILABLE);
