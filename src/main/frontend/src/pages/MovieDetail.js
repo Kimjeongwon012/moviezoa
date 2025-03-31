@@ -12,6 +12,7 @@ import {FaLessThan, FaGreaterThan} from "react-icons/fa";
 import MovieCastCarousel from "../components/Movie/MovieCastCarousel";
 import "lite-youtube-embed/src/lite-yt-embed.css";
 import LiteYouTubePlayer from "../components/Movie/LiteYouTubePlayer";
+import MovieStillImageCarousel from "../components/Movie/MovieStillImageCarousel";
 
 // 전체 프론트엔드 레이아웃 (IMDB 사이트 참고하여 기본 HTML 구조 구현)
 function MovieDetail() {
@@ -131,6 +132,7 @@ function MovieDetail() {
                                 ))}
                             </div>
                             <h2 style={{color: "#ffffff", marginTop: 50, marginBottom: 25}}>║스틸컷</h2>
+                            <MovieStillImageCarousel key={movie.id} images={movie.images.backdrops}/>
                         </div>
                     </div>
                 </main>

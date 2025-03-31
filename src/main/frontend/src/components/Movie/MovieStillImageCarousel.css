@@ -1,0 +1,23 @@
+.movie-still-iamge {
+    color: white;
+}
+
+.movie-still-iamge-carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+}
+
+.movie-still-iamge-carousel {
+    display: flex;
+    overflow: hidden;
+    gap: 10px;
+}
+
+.movie-still-iamge-list {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* 애니메이션 적용 */
+    gap: 10px;
+}
