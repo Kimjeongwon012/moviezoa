@@ -13,13 +13,13 @@ import MovieCastCarousel from "../components/Movie/MovieCastCarousel";
 import "lite-youtube-embed/src/lite-yt-embed.css";
 import LiteYouTubePlayer from "../components/Movie/LiteYouTubePlayer";
 import MovieStillImageCarousel from "../components/Movie/MovieStillImageCarousel";
+import MovieReviewSection from "../components/Movie/MovieReviewSection";
 
 // 전체 프론트엔드 레이아웃 (IMDB 사이트 참고하여 기본 HTML 구조 구현)
 function MovieDetail() {
     const {id} = useParams();
     const [movie, setMovie] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-
 
     useEffect(() => {
         fetchMovieById(id).then((data) => {
@@ -82,7 +82,11 @@ function MovieDetail() {
                                 </div>
                                 <hr/>
                                 <h3>║줄거리</h3>
-                                <p className="movie-overview">{movie.overview}</p>
+                                <p className="movie-overview">{movie.overview ? (
+                                    movie.overview
+                                ) : (
+                                    "줄거리 정보가 제공되지 않았습니다."
+                                )}</p>
                                 <hr/>
                                 <div className="rating-container">
 
@@ -123,16 +127,17 @@ function MovieDetail() {
                             </div>
                             <h2 style={{color: "#ffffff", marginTop: 50, marginBottom: 25}}>║트레일러</h2>
                             <div className="movie-trailer-container">
-                                {movie.videos?.results?.slice(0, 2).map((trailer) => (
-                                    trailer ? (
+                                {movie.videos?.results && movie.videos.results.length > 0 ? (
+                                    movie.videos.results.slice(0, 2).map((trailer) => (
                                         <LiteYouTubePlayer key={trailer.key} data={trailer}/>
-                                    ) : (
-                                        <h1 style={{color: '#ffffff'}}>출연진 정보가 제공되지 않았습니다.</h1>
-                                    )
-                                ))}
+                                    ))
+                                ) : (
+                                    <h1 style={{color: '#ffffff'}}>트레일러 정보가 제공되지 않았습니다.</h1>
+                                )}
                             </div>
                             <h2 style={{color: "#ffffff", marginTop: 50, marginBottom: 25}}>║스틸컷</h2>
                             <MovieStillImageCarousel key={movie.id} images={movie.images.backdrops}/>
+                            {/*<MovieReviewSection key={movie.id} reviews={movie.reviews}/>*/}
                         </div>
                     </div>
                 </main>

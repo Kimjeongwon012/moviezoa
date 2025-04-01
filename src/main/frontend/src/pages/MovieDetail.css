@@ -200,3 +200,33 @@
     justify-content: center;
 }
 
+.movie-review-container {
+    margin-top: 100px;
+}
+
+.movie-review-info {
+    color: white;
+    border-top: dashed 2px #e0e0e0;
+    border-radius: 30px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.review-sort-tabs {
+    display: flex;
+}
+
+.review-sort-tabs button {
+    padding: 8px 16px;
+    border: none;
+    background: #f0f0f0;
+    margin-right: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.review-sort-tabs .active {
+    background: #333;
+    color: #fff;
+}

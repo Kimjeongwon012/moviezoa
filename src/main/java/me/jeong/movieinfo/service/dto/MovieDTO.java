@@ -45,6 +45,7 @@ public class MovieDTO {
     private List<GenreDTO> genres;
     private ImageDTO images;
     private VideoDTO videos;
+    private ReviewDTO review;
     private CreditDTO credits;
 
     public String getBackdropPath() {
