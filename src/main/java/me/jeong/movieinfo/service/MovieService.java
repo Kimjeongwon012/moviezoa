@@ -34,6 +34,12 @@ public class MovieService {
         this.tmdbAPI = tmdbAPI;
     }
 
+    /**
+     * 한 달 전부터 한 달 후까지 개봉한 인기 영화를 조회한다.
+     *
+     * @param amount 가져올 인기 영화 수
+     * @return 인기 영화 목록 (DTO 형태)
+     */
     public List<MovieDTO> getPopularMovies(int amount) {
         String oneMonthAgo = DateUtils.convertToString(LocalDate.now().minusMonths(1));
         String oneMonthLater = DateUtils.convertToString(LocalDate.now().plusMonths(1));
@@ -42,6 +48,13 @@ public class MovieService {
         return dtoMovies;
     }
 
+    /**
+     * TMDB API를 통해 영화 상세 정보를 가져오고,
+     * 해당 영화에 대한 리뷰도 함께 조회하여 설정한다.
+     *
+     * @param movieId 상세 정보를 조회할 영화 ID
+     * @return 영화 상세 정보 (리뷰 포함, DTO 형태)
+     */
     public MovieDTO getMovieDetails(Long movieId) {
         MovieDTO dto = tmdbAPI.fetchMovieDetails(movieId);
         Sort sort = Sort.by(Sort.Direction.DESC, "createdAt");
@@ -49,8 +62,15 @@ public class MovieService {
         dto.setReview(getReviewsByMovieId(movieId, pageable));
         return dto;
     }
-    // TODO: 여기서부터 수정!!!!!
 
+    /**
+     * 영화 ID를 기반으로 해당 영화에 대한 리뷰를 페이지 단위로 조회하고,
+     * 평균 평점, 리뷰 수 등의 정보를 포함한 DTO를 반환한다.
+     *
+     * @param movieId  리뷰를 조회할 영화 ID
+     * @param pageable 페이징 및 정렬 정보
+     * @return 리뷰 정보 DTO (평균 평점, 리뷰 목록 포함)
+     */
     public ReviewDTO getReviewsByMovieId(Long movieId, Pageable pageable) {
         ReviewDTO dto = new ReviewDTO();
         List<Review> reviews = reviewRepository.findReviewsByMovieId(movieId, pageable);
