@@ -1,9 +1,20 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import "./MovieReviewSecetion.css";
+import {fetchReviewsByMovieId} from "../../services/movieService";
 
-export default function MovieReviewSection({review}) {
+export default function MovieReviewSection({movieId}) {
     const [active, setActive] = useState('');
-    console.log('test', review);
+    const [review, setReview] = useState({reviews: [], avgRating: 0, length: 0});
+
+    useEffect(() => {
+        fetchReviewsByMovieId(movieId).then((data) => {
+            setReview(data);
+        }).catch((error) => {
+            console.error(error);
+        });
+    }, [active]);
+
+    console.log(review);
     return (
         <div className="movie-review-container">
             <div className="movie-review-info">
@@ -27,7 +38,7 @@ export default function MovieReviewSection({review}) {
             </div>
             <div className="movie-reviews">
                 {review.reviews.map((item) => (
-                    <div className="review-card">
+                    <div className="review-card" key={item.id}>
                         <div className="review-header">
                             <h3>김정원</h3>
                             <div className="review-star">
@@ -40,7 +51,6 @@ export default function MovieReviewSection({review}) {
                             <h4>{item.content}</h4>
                         </div>
                     </div>
-
                 ))}
             </div>
         </div>

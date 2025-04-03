@@ -137,7 +137,7 @@ function MovieDetail() {
                             </div>
                             <h2 style={{color: "#ffffff", marginTop: 50, marginBottom: 25}}>║스틸컷</h2>
                             <MovieStillImageCarousel key={movie.id} images={movie.images.backdrops}/>
-                            <MovieReviewSection key={movie.id} review={movie.review}/>
+                            <MovieReviewSection key={movie.id + 'review'} movieId={movie.id}/>
                         </div>
                     </div>
                 </main>
