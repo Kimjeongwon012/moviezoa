@@ -52,14 +52,14 @@ public class MovieService {
      * TMDB API를 통해 영화 상세 정보를 가져오고,
      * 해당 영화에 대한 리뷰도 함께 조회하여 설정한다.
      *
-     * @param movieId 상세 정보를 조회할 영화 ID
+     * @param id 상세 정보를 조회할 영화 ID
      * @return 영화 상세 정보 (리뷰 포함, DTO 형태)
      */
-    public MovieDTO getMovieDetails(Long movieId) {
-        MovieDTO dto = tmdbAPI.fetchMovieDetails(movieId);
+    public MovieDTO getMovieDetails(Long id) {
+        MovieDTO dto = tmdbAPI.fetchMovieDetails(id);
         Sort sort = Sort.by(Sort.Direction.DESC, "createdAt");
         Pageable pageable = PageRequest.of(0, 10, sort);
-        dto.setReview(getReviewsByMovieId(movieId, pageable));
+        dto.setReview(getReviewsByMovieId(id, pageable));
         return dto;
     }
 
@@ -67,13 +67,14 @@ public class MovieService {
      * 영화 ID를 기반으로 해당 영화에 대한 리뷰를 페이지 단위로 조회하고,
      * 평균 평점, 리뷰 수 등의 정보를 포함한 DTO를 반환한다.
      *
-     * @param movieId  리뷰를 조회할 영화 ID
+     * @param id       리뷰를 조회할 영화 ID
      * @param pageable 페이징 및 정렬 정보
      * @return 리뷰 정보 DTO (평균 평점, 리뷰 목록 포함)
      */
-    public ReviewDTO getReviewsByMovieId(Long movieId, Pageable pageable) {
+    public ReviewDTO getReviewsByMovieId(Long id, Pageable pageable) {
         ReviewDTO dto = new ReviewDTO();
-        List<Review> reviews = reviewRepository.findReviewsByMovieId(movieId, pageable);
+
+        List<Review> reviews = reviewRepository.findReviewsByMovieId(id, pageable);
 
         double rattingSum = 0;
         for (int idx = 0; idx < reviews.size(); idx++) {
@@ -87,5 +88,20 @@ public class MovieService {
         dto.setLength(reviews.size());
 
         return dto;
+    }
+    
+    /**
+     * 주어진 영화 ID를 기반으로 리뷰를 생성하여 저장한다.
+     *
+     * @param id      리뷰를 작성할 대상 영화의 ID
+     * @param content 리뷰 내용
+     * @param rating  리뷰 평점 (1~5)
+     */
+    public void writeReview(Long id, String content, int rating) {
+        Review review = new Review();
+        review.setMovieId(id);
+        review.setContent(content);
+        review.setRating(rating);
+        reviewRepository.save(review);
     }
 }
