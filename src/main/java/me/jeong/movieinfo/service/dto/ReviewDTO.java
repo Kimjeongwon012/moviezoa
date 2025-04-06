@@ -14,5 +14,6 @@ import java.util.List;
 public class ReviewDTO {
     private List<MovieReviewDTO> reviews;
     private int length;
+    private int totalCount;
     private double avgRating;
 }

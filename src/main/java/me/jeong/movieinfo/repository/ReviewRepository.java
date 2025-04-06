@@ -11,5 +11,8 @@ import java.util.List;
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, Long> {
     List<Review> findReviewsByMovieId(Long movieId, Pageable pageable);
+
+    @Query("SELECT SUM(r.rating) FROM Review r")
+    Long getTotalRating();
 }
 

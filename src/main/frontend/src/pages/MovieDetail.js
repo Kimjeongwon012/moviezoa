@@ -28,8 +28,7 @@ function MovieDetail() {
             console.error(error);
         }).finally(() => setIsLoading(false))
     }, [id]);
-
-    console.log(movie);
+    
     if (isLoading) {
         return (
             <div>

@@ -1,23 +1,29 @@
 import React, {useState, useEffect} from "react";
 import "./MovieReviewSecetion.css";
 import {fetchReviews, postReview} from "../../services/movieService";
+import Pagination from "../Common/Pagination";
 
 export default function MovieReviewSection({movieId}) {
     const [onSort, setOnSort] = useState('createdAt,desc');
-    const [page, setPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1);
     const [review, setReview] = useState({reviews: [], avgRating: 0, length: 0});
     const [content, setContent] = useState('');
     const [rating, setRating] = useState(0);
     const [reloadTrigger, setReloadTrigger] = useState(false);
-    const size = 10;
+    const pageSize = 5;
 
     useEffect(() => {
-        fetchReviews(movieId, onSort, page, size).then((data) => {
+        fetchReviews(movieId, onSort, currentPage, pageSize).then((data) => {
             setReview(data);
         }).catch((error) => {
             console.error(error);
         });
     }, [onSort, reloadTrigger]);
+
+    function onPageChange(pageNumber) {
+        setCurrentPage(pageNumber);
+        setReloadTrigger(prev => !prev);
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // form의 기본 동작(새로고침) 방지
@@ -32,13 +38,11 @@ export default function MovieReviewSection({movieId}) {
         setReloadTrigger(prev => !prev);
     };
 
-
-    console.log(review);
     return (
         <div className="movie-review-container">
             <div className="movie-review-info">
                 <div>
-                    <h3>리뷰<span style={{fontSize: 21}}>&nbsp;{review.length}</span></h3>
+                    <h3>리뷰<span style={{fontSize: 21}}>&nbsp;{review.totalCount}</span></h3>
                     <p>평점 : &nbsp;<span>{review.avgRating.toFixed(1)}</span> / 5</p>
                 </div>
                 <div>
@@ -94,6 +98,10 @@ export default function MovieReviewSection({movieId}) {
                         </div>
                     </div>
                 ))}
+            </div>
+            <div className="comment-nav">
+                <Pagination currentPage={currentPage} totalPages={Math.ceil(review.totalCount / pageSize)}
+                            onPageChange={onPageChange}/>
             </div>
         </div>
     );

@@ -76,20 +76,19 @@ public class MovieService {
 
         List<Review> reviews = reviewRepository.findReviewsByMovieId(id, pageable);
 
-        double rattingSum = 0;
-        for (int idx = 0; idx < reviews.size(); idx++) {
-            rattingSum += reviews.get(idx).getRating();
-        }
+        double rattingSum = reviewRepository.getTotalRating();
+        
         if (reviews.size() != 0 && rattingSum != 0) {
-            double avgRating = rattingSum / reviews.size();
+            double avgRating = rattingSum / (int) reviewRepository.count();
             dto.setAvgRating(avgRating);
         }
         dto.setReviews(ReviewMapper.toDtoList(reviews));
+        dto.setTotalCount((int) reviewRepository.count());
         dto.setLength(reviews.size());
 
         return dto;
     }
-    
+
     /**
      * 주어진 영화 ID를 기반으로 리뷰를 생성하여 저장한다.
      *
