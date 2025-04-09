@@ -77,13 +77,13 @@ public class MovieService {
         List<Review> reviews = reviewRepository.findReviewsByMovieId(id, pageable);
 
         double rattingSum = reviewRepository.getTotalRating();
-        
-        if (reviews.size() != 0 && rattingSum != 0) {
-            double avgRating = rattingSum / (int) reviewRepository.count();
+        int rattingSize = (int) reviewRepository.count();
+        if (rattingSize != 0 && rattingSum != 0) {
+            double avgRating = rattingSum / rattingSize;
             dto.setAvgRating(avgRating);
         }
         dto.setReviews(ReviewMapper.toDtoList(reviews));
-        dto.setTotalCount((int) reviewRepository.count());
+        dto.setTotalCount(rattingSize);
         dto.setLength(reviews.size());
 
         return dto;
