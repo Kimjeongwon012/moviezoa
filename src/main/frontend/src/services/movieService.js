@@ -2,7 +2,6 @@ import axios from "axios";
 
 export const fetchMostPopularMovies = async (amount) => {
     const response = await axios.get('/api/movie/top-popular/' + amount);
-    console.log(response.data);
     return response.data;
 };
 

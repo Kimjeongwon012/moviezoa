@@ -1,5 +1,7 @@
 import React from "react";
 import "./Header.css";
+import {Link} from 'react-router-dom';
+
 function Header() {
     return (
         <header className="header">
@@ -14,12 +16,12 @@ function Header() {
                         <option>Movies</option>
                         <option>TV Shows</option>
                     </select>
-                    <input type="text" placeholder="Search IMDb" className="search-box" />
+                    <input type="text" placeholder="Search IMDb" className="search-box"/>
                     <button className="search-btn">🔍</button>
                     <div className="user-actions">
-                        <a href="#">IMDbPro</a>
-                        <a href="#">Watchlist</a>
-                        <a href="#">Sign In</a>
+                        <Link to="#">IMDbPro</Link>
+                        <Link to="#">Watchlist</Link>
+                        <Link to="/login">Sign In</Link>
                         <select className="lang-select">
                             <option>EN</option>
                             <option>KR</option>
@@ -30,4 +32,5 @@ function Header() {
         </header>
     );
 }
+
 export default Header;

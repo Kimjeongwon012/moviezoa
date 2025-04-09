@@ -1,8 +1,9 @@
 import React from "react";
 import "./MovieCard.css";
+import {Link} from 'react-router-dom';
 
 const MovieCard = ({id, title, image_url}) => (
-    <a href={`/movies/${id}`}>
+    <Link to={`/movies/${id}`}>
         <div className="movie-card">
             <div className="card-content">
                 <div className="movieImg">
@@ -13,6 +14,6 @@ const MovieCard = ({id, title, image_url}) => (
                 </div>
             </div>
         </div>
-    </a>
+    </Link>
 );
 export default MovieCard;

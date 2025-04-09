@@ -4,6 +4,7 @@ import axios from "axios";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Home from "./pages/Home";
 import MovieDetail from "./pages/MovieDetail";
+import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 
 function App() {
@@ -11,7 +12,9 @@ function App() {
         <Router>
             <Routes>
                 <Route path="/" element={<Home/>}/>
-                <Route path="/movies/:id" element={<MovieDetail/>}/>
+                <Route path="/movie/:id" element={<MovieDetail/>}/>
+                <Route path="/login" element={<Login/>}/>
+                <Route path="/*" element={<NotFound/>}/>
             </Routes>
         </Router>
     );

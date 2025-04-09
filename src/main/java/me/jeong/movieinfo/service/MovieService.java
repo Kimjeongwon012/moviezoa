@@ -76,8 +76,8 @@ public class MovieService {
 
         List<Review> reviews = reviewRepository.findReviewsByMovieId(id, pageable);
 
-        double rattingSum = reviewRepository.getTotalRating();
-        int rattingSize = (int) reviewRepository.count();
+        double rattingSum = reviewRepository.getTotalRating(id);
+        int rattingSize = reviewRepository.countByMovieId(id);
         if (rattingSize != 0 && rattingSum != 0) {
             double avgRating = rattingSum / rattingSize;
             dto.setAvgRating(avgRating);

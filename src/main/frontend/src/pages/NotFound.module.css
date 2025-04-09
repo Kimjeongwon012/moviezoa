@@ -1,0 +1,179 @@
+.pageContainer {
+    min-height: 100vh;
+    min-width: 100vh;
+    background-color: #0c091e;
+    padding-right: 21px;
+    overflow: hidden;
+}
+
+.contentWrapper {
+    gap: 20px;
+    display: flex;
+}
+
+.mainColumn {
+    flex-direction: column;
+    align-items: stretch;
+    width: 67%;
+    margin-left: 0;
+    line-height: normal;
+    display: flex;
+}
+
+.innerContent {
+    flex-grow: 1;
+}
+
+.contentLayout {
+    gap: 20px;
+    display: flex;
+}
+
+.imageColumn {
+    flex-direction: column;
+    align-items: stretch;
+    width: 55%;
+    margin-left: 0;
+    line-height: normal;
+    display: flex;
+}
+
+.mainImage {
+    aspect-ratio: 0.7;
+    object-fit: contain;
+    object-position: center;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.messageColumn {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 55%;
+    margin-left: 20px;
+    line-height: normal;
+    display: flex;
+}
+
+.messageContainer {
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Concert One,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+    font-weight: 350;
+    display: flex;
+}
+
+.errorCode {
+    color: #d7d5e4;
+    font-size: 128px;
+    margin: 0;
+}
+
+.errorTitle {
+    color: #9e9bb2;
+    align-self: stretch;
+    margin-top: 57px;
+    font-size: 64px;
+    margin-bottom: 0;
+}
+
+.homeLink {
+    color: #fff;
+    text-align: right;
+    margin-top: 204px;
+
+    font-size: 37px;
+    text-decoration: none;
+}
+
+.sideColumn {
+    flex-direction: column;
+    align-items: stretch;
+    width: 33%;
+    margin-left: 20px;
+    line-height: normal;
+    display: flex;
+}
+
+.sideImage {
+    aspect-ratio: 0.63;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 0;
+    width: 100%;
+    margin-top: 18px;
+}
+
+@media (width <= 991px) {
+    .pageContainer {
+        padding-right: 20px;
+    }
+
+    .contentWrapper {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .mainColumn {
+        width: 100%;
+    }
+
+    .innerContent {
+        max-width: 100%;
+        margin-top: 19px;
+    }
+
+    .contentLayout {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .imageColumn {
+        width: 100%;
+    }
+
+    .mainImage {
+        max-width: 100%;
+    }
+
+    .messageColumn {
+        width: 100%;
+    }
+
+    .messageContainer {
+        max-width: 100%;
+        margin-top: 40px;
+    }
+
+    .errorCode {
+        font-size: 40px;
+    }
+
+    .errorTitle {
+        max-width: 100%;
+        margin-top: 40px;
+        font-size: 40px;
+    }
+
+    .homeLink {
+        margin-top: 40px;
+    }
+
+    .sideColumn {
+        width: 100%;
+    }
+
+    .sideImage {
+        max-width: 100%;
+        margin-top: 37px;
+    }
+}
