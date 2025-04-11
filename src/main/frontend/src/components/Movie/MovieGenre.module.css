@@ -1,4 +1,4 @@
-.genre-button {
+.genreButton {
     background-color: rgba(255, 255, 255, 0.01); /* 반투명 배경 */
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -10,6 +10,6 @@
     transition: background-color 0.3s;
 }
 
-.genre-button:hover {
+.genreButton:hover {
     background-color: rgba(255, 255, 255, 0.3); /* 호버 효과 */
 }

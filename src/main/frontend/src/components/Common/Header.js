@@ -1,28 +1,28 @@
 import React from "react";
-import "./Header.css";
+import styles from "./Header.module.css";
 import {Link} from 'react-router-dom';
 
 function Header() {
     return (
-        <header className="header">
-            <div className="navbar">
-                <div className="logo">
+        <header className={styles.header}>
+            <div className={styles.navbar}>
+                <div className={styles.logo}>
                     <img src="logo.png" alt="IMDB"/>
                 </div>
-                <nav>
-                    <button className="menu-btn">☰ Menu</button>
-                    <select className="dropdown">
+                <nav className={styles.nav}>
+                    <button className={styles.menuBtn}>☰ Menu</button>
+                    <select className={styles.dropdown}>
                         <option>All</option>
                         <option>Movies</option>
                         <option>TV Shows</option>
                     </select>
-                    <input type="text" placeholder="Search IMDb" className="search-box"/>
-                    <button className="search-btn">🔍</button>
-                    <div className="user-actions">
+                    <input type="text" placeholder="Search IMDb" className={styles.searchBox}/>
+                    <button className={styles.searchBtn}>🔍</button>
+                    <div className={styles.userActions}>
                         <Link to="#">IMDbPro</Link>
                         <Link to="#">Watchlist</Link>
                         <Link to="/login">Sign In</Link>
-                        <select className="lang-select">
+                        <select className={styles.langSelect}>
                             <option>EN</option>
                             <option>KR</option>
                         </select>

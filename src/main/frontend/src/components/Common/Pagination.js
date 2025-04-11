@@ -1,6 +1,5 @@
-// src/components/Pagination.js
 import React from "react";
-import "./Pagination.css";
+import styles from "./Pagination.module.css";
 
 const Pagination = ({currentPage, totalPages, onPageChange}) => {
     const pageNumbers = [];
@@ -10,11 +9,11 @@ const Pagination = ({currentPage, totalPages, onPageChange}) => {
     }
 
     return (
-        <div className="pagination">
+        <div className={styles.pagination}>
             <button
                 onClick={() => onPageChange(currentPage - 1)}
                 disabled={currentPage === 1}
-                className="page-button"
+                className={styles.pageButton}
             >
                 이전
             </button>
@@ -23,9 +22,7 @@ const Pagination = ({currentPage, totalPages, onPageChange}) => {
                 <button
                     key={number}
                     onClick={() => onPageChange(number)}
-                    className={`page-number ${
-                        number === currentPage ? "active" : ""
-                    }`}
+                    className={`${styles.pageNumber} ${number === currentPage ? styles.active : ""}`}
                 >
                     {number}
                 </button>
@@ -34,7 +31,7 @@ const Pagination = ({currentPage, totalPages, onPageChange}) => {
             <button
                 onClick={() => onPageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
-                className="page-button"
+                className={styles.pageButton}
             >
                 다음
             </button>

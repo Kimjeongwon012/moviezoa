@@ -1,36 +1,37 @@
 import React, {useState, useEffect} from "react";
-import "./MovieReviewSecetion.css";
+import styles from "./MovieReviewSection.module.css";
 import {fetchReviews, postReview} from "../../services/movieService";
 import Pagination from "../Common/Pagination";
 
 export default function MovieReviewSection({movieId}) {
-    const [onSort, setOnSort] = useState('createdAt,desc');
+    const [sortOption, setSortOption] = useState('createdAt,desc');
     const [currentPage, setCurrentPage] = useState(1);
-    const [review, setReview] = useState({reviews: [], avgRating: 0, length: 0});
+    const [reviewData, setReviewData] = useState({reviews: [], avgRating: 0, totalCount: 0});
     const [content, setContent] = useState('');
     const [rating, setRating] = useState(0);
     const [reloadTrigger, setReloadTrigger] = useState(false);
     const pageSize = 5;
 
     useEffect(() => {
-        fetchReviews(movieId, onSort, currentPage, pageSize).then((data) => {
-            setReview(data);
+        fetchReviews(movieId, sortOption, currentPage, pageSize).then((data) => {
+            setReviewData(data);
         }).catch((error) => {
             console.error(error);
         });
-    }, [onSort, reloadTrigger]);
+    }, [sortOption, reloadTrigger, currentPage]);
 
     function onPageChange(pageNumber) {
         setCurrentPage(pageNumber);
-        setReloadTrigger(prev => !prev);
     }
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // form의 기본 동작(새로고침) 방지
+        e.preventDefault();
         if (content === '') {
             alert('리뷰 내용을 작성해주세요');
+            return;
         } else if (rating === 0) {
             alert('별점을 부여해주세요');
+            return;
         }
         await postReview(movieId, content, rating);
         setRating(0);
@@ -39,69 +40,71 @@ export default function MovieReviewSection({movieId}) {
     };
 
     return (
-        <div className="movie-review-container">
-            <div className="movie-review-info">
+        <div className={styles.reviewContainer}>
+            <div className={styles.headerSection}>
                 <div>
-                    <h3>리뷰<span style={{fontSize: 21}}>&nbsp;{review.totalCount}</span></h3>
-                    <p>평점 : &nbsp;<span>{review.avgRating.toFixed(1)}</span> / 5</p>
+                    <h3>리뷰<span style={{fontSize: 21}}>&nbsp;{reviewData.totalCount}</span></h3>
+                    <p>평점 : &nbsp;<span>{(reviewData.avgRating ?? 0).toFixed(1)}</span> / 5</p>
                 </div>
-                <div>
-                    <div className="review-sort-tabs">
-                        <button onClick={() => setOnSort('createdAt,desc')}
-                                className={onSort === 'createdAt,desc' ? 'active' : ''}>최신순
-                        </button>
-                        <button onClick={() => setOnSort('rating,desc')}
-                                className={onSort === 'rating,desc' ? 'active' : ''}>평점 높은순
-                        </button>
-                        <button onClick={() => setOnSort('rating,asc')}
-                                className={onSort === 'rating,asc' ? 'active' : ''}>평점 낮은순
-                        </button>
-                    </div>
+                <div className={styles.sortTabs}>
+                    <button onClick={() => setSortOption('createdAt,desc')}
+                            className={sortOption === 'createdAt,desc' ? 'active' : ''}>최신순
+                    </button>
+                    <button onClick={() => setSortOption('rating,desc')}
+                            className={sortOption === 'rating,desc' ? 'active' : ''}>평점 높은순
+                    </button>
+                    <button onClick={() => setSortOption('rating,asc')}
+                            className={sortOption === 'rating,asc' ? 'active' : ''}>평점 낮은순
+                    </button>
                 </div>
             </div>
-            <div className="comment-write">
-                <div className="comment-header">
-                    <h3>김정원</h3>
-                </div>
-                <form className="comment-form" onSubmit={handleSubmit}>
-                    <textarea className="comment-input"
-                              placeholder="리뷰를 입력해주세요..."
-                              value={content}
+
+            <div className={styles.writeSection}>
+                <div className={styles.writerProfile}><h3>김정원</h3></div>
+                <form className={styles.reviewForm} onSubmit={handleSubmit}>
+                    <textarea className={styles.textarea} placeholder="리뷰를 입력해주세요..." value={content}
                               onChange={(e) => setContent(e.target.value)}/>
-                    <div className="comment-star-button">
-                        <div className="star-rating">
+                    <div className={styles.formFooter}>
+                        <div className={styles.starRating}>
                             {Array.from({length: 5}, (_, i) => (
                                 <span
                                     key={i}
-                                    className={`star ${i < rating ? "filled" : ""}`}
-                                    onClick={() => setRating(i + 1)}
-                                >★</span>
+                                    className={`${styles.star} ${i < rating ? styles.filled : ''}`}
+                                    onClick={() => setRating(i + 1)}>
+                                    ★
+                                </span>
                             ))}
                         </div>
-                        <button type="submit" className="comment-submit">댓글 등록</button>
+                        <button type="submit" className={styles.submitButton}>댓글 등록</button>
                     </div>
                 </form>
             </div>
-            <div className="movie-reviews">
-                {review.reviews.map((item) => (
-                    <div className="review-card" key={item.id}>
-                        <div className="review-header">
+
+            <div className={styles.reviewList}>
+                {reviewData.reviews.map((item) => (
+                    <div className={styles.reviewCard} key={item.id}>
+                        <div className={styles.cardHeader}>
                             <h3>김정원</h3>
-                            <div className="review-star">
+                            <div className={styles.cardStars}>
                                 {Array.from({length: 5}).map((_, idx) => (
-                                    <span key={idx} className={idx < item.rating ? 'star filled' : 'star'}>★</span>
+                                    <span key={idx}
+                                          className={idx < item.rating ? `${styles.star} ${styles.filled}` : styles.star}>★</span>
                                 ))}
                             </div>
                         </div>
-                        <div className="review-content">
+                        <div className={styles.cardContent}>
                             <h4>{item.content}</h4>
                         </div>
                     </div>
                 ))}
             </div>
-            <div className="comment-nav">
-                <Pagination currentPage={currentPage} totalPages={Math.ceil(review.totalCount / pageSize)}
-                            onPageChange={onPageChange}/>
+
+            <div className={styles.paginationWrapper}>
+                <Pagination
+                    currentPage={currentPage}
+                    totalPages={Math.ceil(reviewData.totalCount / pageSize)}
+                    onPageChange={onPageChange}
+                />
             </div>
         </div>
     );

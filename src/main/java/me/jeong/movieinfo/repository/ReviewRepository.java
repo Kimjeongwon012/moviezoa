@@ -13,7 +13,7 @@ import java.util.List;
 public interface ReviewRepository extends JpaRepository<Review, Long> {
     List<Review> findReviewsByMovieId(Long movieId, Pageable pageable);
 
-    @Query("SELECT SUM(r.rating) FROM Review r where r.movieId = :id")
+    @Query("SELECT COALESCE(SUM(r.rating), 0) FROM Review r where r.movieId = :id")
     Long getTotalRating(@Param("id") Long id);
 
     int countByMovieId(@Param("id") Long id);

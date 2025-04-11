@@ -1,0 +1,29 @@
+/* MovieStillImageCarousel.module.css */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.carouselImageWrapper {
+    display: flex;
+    overflow: hidden;
+    gap: 10px;
+}
+
+.carouselImage {
+    width: 800px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.carouselBtnLeft,
+.carouselBtnRight {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 100%;
+}

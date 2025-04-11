@@ -1,12 +1,12 @@
 .footer {
-    background-color: #121212;
+    background-color: #25292e;
 }
 
 .container {
     display: flex;
     align-items: center;
     justify-content: center; /* 중앙 정렬 */
-    background-color: #1C1C1C;
+    background-color: #25292e;
     padding: 10px 5%;
     color: white;
     margin: 0 auto; /* 화면 중앙 정렬 */

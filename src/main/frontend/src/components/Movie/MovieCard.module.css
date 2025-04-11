@@ -1,5 +1,5 @@
-.movie-card {
-    background-color: #1e1e1e;
+.movieCard {
+    background-color: initial;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -7,27 +7,27 @@
     width: 175px;
 }
 
-.movie-card:hover {
+.movieCard:hover {
     transform: scale(1.05);
 }
 
-.movie-card img {
+.movieCard img {
     display: block;
     height: 250px;
     width: 100%;
 }
 
-.movie-card .card-content {
+.movieCard .cardContent {
     color: white;
     text-align: center;
 }
 
-.movie-card .card-content h3 {
+.movieCard .cardContent h3 {
     margin: 10px 0;
     font-size: 1.5em;
 }
 
-.movie-card .card-content p {
+.movieCard .cardContent p {
     font-size: 1em;
     color: #bbb;
 }
@@ -47,5 +47,4 @@ a {
     color: #ffffff;
     padding: 5px 15px 5px 15px;
     align-items: center;
-    background-color: #343434;
 }

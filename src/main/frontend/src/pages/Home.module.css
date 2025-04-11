@@ -1,18 +1,18 @@
 /* 메인 카드 레이아웃 */
-.main-container {
+.mainContainer {
     display: flex;
     flex-wrap: wrap;
-    background-color: #121212;
-    background-image: url("https://www.transparenttextures.com/patterns/brick-wall-dark.png");
+    background-color: #ffffff;
     background-repeat: repeat;
     min-height: 1280px;
 }
 
-.main-content {
+.mainContent {
     padding: 20px;
     margin: 0 auto;
     width: 1200px;
-    background: radial-gradient(ellipse at center, rgba(18, 18, 18, 1) 0%, rgba(18, 18, 18, 0.8) 30%, rgba(18, 18, 18, 0.6) 60%, rgba(18, 18, 18, 0.4) 80%, rgba(18, 18, 18, 0.2) 100%);
+
+    background-color: #ffffff;
     min-height: 100%;
 }
 

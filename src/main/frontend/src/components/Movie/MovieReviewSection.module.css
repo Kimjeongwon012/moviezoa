@@ -1,8 +1,8 @@
-.movie-review-container {
+.reviewContainer {
     margin-top: 100px;
 }
 
-.movie-review-info {
+.headerSection {
     color: white;
     border-top: dashed 2px #e0e0e0;
     border-radius: 30px;
@@ -11,17 +11,11 @@
     justify-content: space-between;
 }
 
-.movie-reviews {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.review-sort-tabs {
+.sortTabs {
     display: flex;
 }
 
-.review-sort-tabs button {
+.sortTabs button {
     padding: 8px 16px;
     border: none;
     background: #f0f0f0;
@@ -30,67 +24,37 @@
     cursor: pointer;
 }
 
-.review-sort-tabs .active {
+.active {
     background: #333;
     color: #fff;
 }
 
-.review-card {
+.writeSection {
     border: solid 1px #4a4a4a;
     border-radius: 15px;
     color: white;
-    /* 순서: top right bottom left */
-    padding: 15px 15px 15px 20px;
-    display: flex;
-    gap: 15px;
-}
-
-.review-header {
-    border: solid 1px #4a4a4a;
-    border-radius: 15px;
-    background: #171718;
-    padding: 15px 15px 15px 15px;
-}
-
-.review-content {
-    border: solid 1px #4a4a4a;
-    border-radius: 15px;
-    padding: 15px 15px 15px 15px;
-    background: #171718;
-    width: 100%;
-}
-
-.star.filled {
-    color: #facc15;
-}
-
-.comment-write {
-    border: solid 1px #4a4a4a;
-    border-radius: 15px;
-    color: white;
-    /* 순서: top right bottom left */
     padding: 15px 15px 15px 20px;
     display: flex;
     gap: 30px;
     margin-bottom: 30px;
 }
 
-.comment-header {
+.writerProfile {
     border: solid 1px #4a4a4a;
     border-radius: 15px;
     background: #171718;
-    padding: 15px 15px 15px 15px;
+    padding: 15px;
     width: 70px;
 }
 
-.comment-form {
+.reviewForm {
     gap: 8px;
     width: 87%;
     display: flex;
     flex-direction: column;
 }
 
-.comment-input {
+.textarea {
     resize: none;
     min-height: 70px;
     min-width: 85%;
@@ -104,17 +68,30 @@
     transition: border-color 0.3s;
 }
 
-.comment-input:focus {
+.textarea:focus {
     border-color: #5f5f5e;
     outline: none;
 }
 
-.comment-star-button {
+.formFooter {
     display: flex;
     justify-content: space-between;
 }
 
-.comment-submit {
+.starRating {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.star {
+    color: #aaa;
+}
+
+.filled {
+    color: #facc15;
+}
+
+.submitButton {
     align-self: flex-end;
     padding: 8px 16px;
     background-color: #444;
@@ -126,12 +103,45 @@
     transition: background-color 0.3s;
 }
 
-.star-rating {
-    font-size: 25px;
-    cursor: pointer;
-}
-
-.comment-submit:hover {
+.submitButton:hover {
     background-color: #ffffff;
     color: black;
+}
+
+.reviewList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.reviewCard {
+    border: solid 1px #4a4a4a;
+    border-radius: 15px;
+    color: white;
+    padding: 15px 15px 15px 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.cardHeader {
+    border: solid 1px #4a4a4a;
+    border-radius: 15px;
+    background: #171718;
+    padding: 15px;
+}
+
+.cardContent {
+    border: solid 1px #4a4a4a;
+    border-radius: 15px;
+    padding: 15px;
+    background: #171718;
+    width: 100%;
+}
+
+.cardStars {
+    display: flex;
+}
+
+.paginationWrapper {
+    margin-top: 20px;
 }

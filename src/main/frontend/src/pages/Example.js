@@ -7,8 +7,8 @@ function Example() {
     return (
         <div>
             <Header/>
-            <main className="main-container">
-                <div className="main-content">
+            <main className={styles.mainContainer}>
+                <div className={styles.mainContent}>
                 </div>
             </main>
             <Footer/>

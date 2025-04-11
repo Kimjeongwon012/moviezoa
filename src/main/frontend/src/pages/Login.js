@@ -6,12 +6,6 @@ import {Link} from 'react-router-dom';
 function Login() {
     return (
         <div>
-            <Header/>
-            <main className="main-container">
-                <div className="main-content">
-                </div>
-            </main>
-            <Footer/>
         </div>
     );
 }

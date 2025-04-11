@@ -1,6 +1,6 @@
 import React from "react";
-import {useEffect, useState} from "react";
-import "./MovieCastCarousel.css";
+import {useState} from "react";
+import styles from "./MovieCastCarousel.module.css";
 import {FaGreaterThan, FaLessThan} from "react-icons/fa";
 import ActorCard from "../ActorCard";
 
@@ -28,19 +28,19 @@ function MovieCastCarousel({casts}) {
     };
     if (casts.length == 0) {
         return (
-            <div className="movie-actor-carousel-container" style={{justifyContent: 'center'}}>
+            <div className={styles.container} style={{justifyContent: 'center'}}>
                 <h1 style={{color: '#ffffff'}}>출연진 정보가 제공되지 않았습니다.</h1>
             </div>
         );
     } else {
         return (
-            <div className="movie-actor-carousel-container">
-                <div className="movie-actor-carousel-button-left">
-                    <FaLessThan style={{fontSize: 25, color: "#ffffff"}}
+            <div className={styles.container}>
+                <div>
+                    <FaLessThan style={{fontSize: 25}}
                                 onClick={handleBtnLeftClick}/>
                 </div>
-                <div className="movie-actor-carousel">
-                    <div className="movie-actor-list"
+                <div className={styles.carousel}>
+                    <div className={styles.actorList}
                          style={{transform: `translateX(${scrollX}px)`, width: casts.length * cardWidth}}>
                         {casts.map((cast) => (
                             <ActorCard key={cast.id} id={cast.id} name={cast.name}
@@ -50,8 +50,8 @@ function MovieCastCarousel({casts}) {
                         ))}
                     </div>
                 </div>
-                <div className="movie-actor-carousel-button-right">
-                    <FaGreaterThan style={{fontSize: 25, color: "#ffffff"}}
+                <div>
+                    <FaGreaterThan style={{fontSize: 25}}
                                    onClick={handleBtnRightClick}/>
                 </div>
             </div>

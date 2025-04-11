@@ -1,4 +1,5 @@
-/* src/components/Pagination.css */
+/* Pagination.module.css */
+
 .pagination {
     display: flex;
     justify-content: center;
@@ -6,8 +7,8 @@
     margin-top: 20px;
 }
 
-.page-button,
-.page-number {
+.pageButton,
+.pageNumber {
     padding: 6px 12px;
     border: 1px solid #ccc;
     background-color: #171719;
@@ -16,12 +17,12 @@
     transition: background-color 0.2s ease;
 }
 
-.page-button:disabled {
+.pageButton:disabled {
     opacity: 0.5;
     cursor: not-allowed;
 }
 
-.page-number.active {
+.active {
     background-color: #171719;
     color: white;
     font-weight: bold;

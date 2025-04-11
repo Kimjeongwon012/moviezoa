@@ -1,12 +1,12 @@
 import React from "react";
-import "./Skeleton.css";
+import styles from "./Skeleton.module.css";
 
 const SkeletonCard = ({width, height}) => {
     return (
-        <div className="skeleton skeleton-image" style={{
-            width: `${width}px`,
-            height: `${height}px`
-        }}></div>
+        <div
+            className={`${styles.skeleton} ${styles.skeletonImage}`}
+            style={{width: `${width}px`, height: `${height}px`}}
+        ></div>
     );
 };
 

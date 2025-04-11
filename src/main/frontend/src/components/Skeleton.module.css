@@ -1,24 +1,24 @@
-/* 스켈레톤 깜빡이는 애니메이션 */
+/* Skeleton.module.css */
+
 @keyframes skeleton-loading {
     0% {
-        background-color: #202020;
+        background-color: #eeeeee;
     }
     50% {
-        background-color: #525252;
+        background-color: #dddddd;
     }
     100% {
-        background-color: #202020;
+        background-color: #eeeeee;
     }
 }
 
-/* 공통 스켈레톤 스타일 */
+
 .skeleton {
     animation: skeleton-loading 1.5s infinite ease-in-out;
     border-radius: 4px;
 }
 
-/* 카드 UI */
-.skeleton-card {
+.skeletonCard {
     width: 250px;
     height: 320px;
     padding: 16px;
@@ -29,28 +29,25 @@
     gap: 12px;
 }
 
-/* 이미지 스켈레톤 */
-.skeleton-image {
+.skeletonImage {
     width: 100%;
     height: 160px;
     background-color: #d1d5db;
 }
 
-/* 제목 스켈레톤 */
-.skeleton-title {
+.skeletonTitle {
     width: 75%;
     height: 24px;
     background-color: #d1d5db;
 }
 
-/* 텍스트 스켈레톤 */
-.skeleton-text {
+.skeletonText {
     width: 50%;
     height: 18px;
     background-color: #d1d5db;
 }
 
-.skeleton-casts {
+.skeletonCasts {
     display: flex;
     flex-direction: column;
     margin-top: 50px;

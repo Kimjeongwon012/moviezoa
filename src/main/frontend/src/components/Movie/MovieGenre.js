@@ -1,10 +1,11 @@
 import React from "react";
-import "./MovieGenre.css";
+import styles from "./MovieGenre.module.css";
+import {Link} from 'react-router-dom';
 
 const MovieGenre = ({id, name}) => (
-    <a href={`/movies/genre/${id}`}>
-        <button className="genre-button">{name}</button>
-    </a>
+    <Link to={`/movie/genre/${id}`}>
+        <button className={styles.genreButton}>{name}</button>
+    </Link>
 );
 
 export default MovieGenre;
