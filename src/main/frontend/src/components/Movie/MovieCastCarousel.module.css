@@ -5,6 +5,7 @@
 .container {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
 }
 
@@ -14,6 +15,15 @@
     border-radius: 15px;
     min-width: 100%;
     gap: 10px;
+}
+
+
+.carouselImageWrapper {
+    width: 75%;
+}
+
+.carouselImage {
+    width: 100%;
 }
 
 .actorList {

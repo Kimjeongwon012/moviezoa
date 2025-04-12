@@ -48,13 +48,14 @@ export default function MovieReviewSection({movieId}) {
                 </div>
                 <div className={styles.sortTabs}>
                     <button onClick={() => setSortOption('createdAt,desc')}
-                            className={sortOption === 'createdAt,desc' ? 'active' : ''}>최신순
+                            className={sortOption === 'createdAt,desc' ? styles.active : styles.sortTabs__button}>최신순
                     </button>
                     <button onClick={() => setSortOption('rating,desc')}
-                            className={sortOption === 'rating,desc' ? 'active' : ''}>평점 높은순
+                            className={sortOption === 'rating,desc' ? styles.active : styles.sortTabs__button}>평점
+                        높은순
                     </button>
                     <button onClick={() => setSortOption('rating,asc')}
-                            className={sortOption === 'rating,asc' ? 'active' : ''}>평점 낮은순
+                            className={sortOption === 'rating,asc' ? styles.active : styles.sortTabs__button}>평점 낮은순
                     </button>
                 </div>
             </div>

@@ -20,11 +20,7 @@ class MovieinfoApplicationTests {
 
     @Test
     void contextLoads() {
-        Review review = new Review();
-        review.setContent("재밌어요");
-        review.setRating(3);
-        review.setMovieId((long) 823219);
-        reviewRepository.save(review);
+        tmdbAPI.fetchAndStoreMovies();
     }
 
 }

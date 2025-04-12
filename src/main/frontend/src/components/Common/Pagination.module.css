@@ -11,8 +11,9 @@
 .pageNumber {
     padding: 6px 12px;
     border: 1px solid #ccc;
-    background-color: #171719;
     color: white;
+    background-color: #6C757D;
+    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
@@ -23,7 +24,7 @@
 }
 
 .active {
-    background-color: #171719;
+    background-color: #212529;
     color: white;
     font-weight: bold;
 }

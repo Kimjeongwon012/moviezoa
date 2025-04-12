@@ -23,20 +23,20 @@ function CarouselStillImage({images}) {
     if (images.length === 0) {
         return (
             <div className={styles.container} style={{justifyContent: 'center'}}>
-                <h1 style={{color: '#ffffff'}}>스틸컷 정보가 제공되지 않았습니다.</h1>
+                <h1>스틸컷 정보가 제공되지 않았습니다.</h1>
             </div>
         );
     } else {
         return (
             <div className={styles.container}>
                 <div className={styles.carouselBtnLeft}>
-                    <FaLessThan style={{fontSize: 45, color: "#ffffff"}} onClick={handleBtnLeftClick}/>
+                    <FaLessThan style={{fontSize: 45}} onClick={handleBtnLeftClick}/>
                 </div>
                 <div className={styles.carouselImageWrapper}>
                     <img src={images[imageIndex].file_path} className={styles.carouselImage} alt="스틸컷"/>
                 </div>
                 <div className={styles.carouselBtnRight}>
-                    <FaGreaterThan style={{fontSize: 45, color: "#ffffff"}} onClick={handleBtnRightClick}/>
+                    <FaGreaterThan style={{fontSize: 45}} onClick={handleBtnRightClick}/>
                 </div>
             </div>
         );

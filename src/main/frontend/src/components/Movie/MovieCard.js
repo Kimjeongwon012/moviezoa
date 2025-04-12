@@ -9,9 +9,6 @@ const MovieCard = ({id, title, image_url}) => (
                 <div>
                     <img src={image_url} alt={title}/>
                 </div>
-                <div className={styles.title}>
-                    {title}
-                </div>
             </div>
         </div>
     </Link>

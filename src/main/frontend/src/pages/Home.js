@@ -12,9 +12,10 @@ function Home() {
 
     useEffect(() => {
         // movieService.js 의 fetchMovies 를 실행하고 백엔드로부터 받아온 데이터를 movies 에 저장, 오류시 발생시 콘솔에 출력
-        fetchMostPopularMovies(25).then((data) => setMovies(data)).catch(console.error);
+        fetchMostPopularMovies(10).then((data) => setMovies(data)).catch(console.error);
     }, []);
-    
+
+    console.log(movies);
     return (
         <div>
             <Header/>

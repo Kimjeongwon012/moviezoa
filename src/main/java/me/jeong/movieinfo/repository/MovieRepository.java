@@ -27,4 +27,7 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
             @Param("end_date") String endDate,
             Pageable pageable
     );
+
+    @Query("SELECT m FROM Movie m WHERE m.release_date BETWEEN CURDATE() - INTERVAL 1 MONTH AND CURDATE() + INTERVAL 1 MONTH")
+    List<Movie> updatePopularityForRecentMovies();
 }

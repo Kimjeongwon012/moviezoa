@@ -29,7 +29,7 @@ function MovieCastCarousel({casts}) {
     if (casts.length == 0) {
         return (
             <div className={styles.container} style={{justifyContent: 'center'}}>
-                <h1 style={{color: '#ffffff'}}>출연진 정보가 제공되지 않았습니다.</h1>
+                <h1>출연진 정보가 제공되지 않았습니다.</h1>
             </div>
         );
     } else {

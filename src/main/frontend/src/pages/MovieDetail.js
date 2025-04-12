@@ -24,7 +24,7 @@ function MovieDetailPage() {
             setMovie(data);
         }).catch((error) => {
             console.error(error);
-        }).finally(() => setIsLoading(true))
+        }).finally(() => setIsLoading(false))
     }, [id]);
 
     console.log(movie);
