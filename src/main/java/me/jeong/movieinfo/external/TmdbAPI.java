@@ -119,6 +119,7 @@ public class TmdbAPI {
         }
     }
 
+    // TODO : 인기도 갱신 로직 만들기
     public void fetchAndStoreMovies() {
         // 영화 데이터를 저장할 리스트
         List<Movie> movieList = new ArrayList<>();
