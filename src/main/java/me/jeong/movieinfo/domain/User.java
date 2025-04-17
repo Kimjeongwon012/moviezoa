@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Getter
 @Setter
@@ -19,4 +21,7 @@ public class User extends BaseEntity {
     private String username;
     private String password;
     private String email;
+    private String role;
+    private String status;
+    private LocalDateTime joinedAt;
 }
