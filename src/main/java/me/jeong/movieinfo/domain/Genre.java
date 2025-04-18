@@ -14,6 +14,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Genre extends BaseEntity {
     @Id
-    private Long id;
+    private long id;
     private String name;
 }

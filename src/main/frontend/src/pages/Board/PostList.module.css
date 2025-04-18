@@ -1,4 +1,3 @@
-/* 메인 카드 레이아웃 */
 .mainContainer {
     display: flex;
     flex-wrap: wrap;
@@ -13,15 +12,4 @@
     width: 1200px;
     background-color: #ffffff;
     min-height: 100%;
-}
-
-.movieList {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); /* ✅ 한 줄에 5개씩 */
-    gap: 20px; /* 카드 간격 */
-    padding: 20px;
-}
-
-.backendMsg {
-    margin-top: 50px;
 }

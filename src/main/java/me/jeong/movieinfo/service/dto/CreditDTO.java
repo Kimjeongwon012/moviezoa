@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreditDTO {
-    private Long id;
+    private long id;
     @JsonProperty("cast")
     private List<CastDTO> casts;
     @JsonProperty("crew")

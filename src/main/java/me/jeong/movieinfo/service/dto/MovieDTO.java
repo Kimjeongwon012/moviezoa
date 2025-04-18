@@ -24,7 +24,7 @@ public class MovieDTO {
         this.base_image_url = Movie_Constants.BaseImageUrl;
     }
 
-    private Long id;
+    private long id;
     private String overview;
     private String title;
     @JsonProperty("original_title")
@@ -34,7 +34,7 @@ public class MovieDTO {
     private String releaseDate;
     private double popularity;
     private double rating;
-    private Long runtime;
+    private long runtime;
     private String status;
     @JsonProperty("backdrop_path")
     private String backdropPath;

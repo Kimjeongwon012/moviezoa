@@ -16,10 +16,10 @@ import lombok.Setter;
 public class Attachment extends BaseEntity {
     @Id
     @GeneratedValue
-    private Long id;
-    private Long postId;
+    private long id;
+    private long postId;
     private String filename;
     private String filepath;
-    private Long filesize;
+    private long filesize;
     private String filetype;
 }

@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MoviePopularityDTO {
-    private Long id;
+    private long id;
     private Double popularity;
 }

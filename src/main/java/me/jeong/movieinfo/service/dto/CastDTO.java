@@ -21,7 +21,7 @@ public class CastDTO {
         this.base_image_url = Movie_Constants.BaseImageUrl;
     }
 
-    private Long id;
+    private long id;
     private String name;
     private String character;
     private int gender;

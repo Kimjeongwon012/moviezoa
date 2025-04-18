@@ -16,9 +16,9 @@ import lombok.Setter;
 public class Comment extends BaseEntity {
     @Id
     @GeneratedValue
-    private Long id;
-    private Long postId;
-    private Long userId;
+    private long id;
+    private long postId;
+    private long userId;
     private String content;
-    private Integer likes;
+    private int likes;
 }

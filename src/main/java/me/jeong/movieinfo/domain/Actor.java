@@ -13,7 +13,7 @@ import lombok.Setter;
 @JsonIgnoreProperties(ignoreUnknown = true) // JSON의 불필요한 필드를 무시
 public class Actor extends BaseEntity {
     @Id
-    private Long id;
+    private long id;
 
     private String adult;
 

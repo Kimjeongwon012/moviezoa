@@ -1,18 +1,18 @@
 // MovieDetailPage.js
 import React from "react";
-import Header from "../components/Common/Header";
-import Footer from "../components/Common/Footer";
+import Header from "../../components/Common/Header";
+import Footer from "../../components/Common/Footer";
 import styles from "./MovieDetail.module.css";
 import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import {fetchMovieById} from "../services/movieService";
-import MovieGenre from "../components/Movie/MovieGenre";
-import SkeletonCard from "../components/Skeleton";
-import MovieCastCarousel from "../components/Movie/MovieCastCarousel";
+import {fetchMovieById} from "../../services/movieService";
+import MovieGenre from "../../components/Movie/MovieGenre";
+import SkeletonCard from "../../components/Skeleton";
+import MovieCastCarousel from "../../components/Movie/MovieCastCarousel";
 import "lite-youtube-embed/src/lite-yt-embed.css";
-import LiteYouTubePlayer from "../components/Movie/LiteYouTubePlayer";
-import MovieStillImageCarousel from "../components/Movie/MovieStillImageCarousel";
-import MovieReviewSection from "../components/Movie/MovieReviewSection";
+import LiteYouTubePlayer from "../../components/Movie/LiteYouTubePlayer";
+import MovieStillImageCarousel from "../../components/Movie/MovieStillImageCarousel";
+import MovieReviewSection from "../../components/Movie/MovieReviewSection";
 
 function MovieDetailPage() {
     const {id} = useParams();

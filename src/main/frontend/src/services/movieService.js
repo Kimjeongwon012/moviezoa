@@ -17,6 +17,14 @@ export const fetchReviews = async (id, sort, page, size) => {
     return response.data;
 };
 
+export const fetchPostsByBoardId = async (id, sort, page, size) => {
+    const response = await axios.get(`/api/board/${id}/post`, {
+            params: {sort, page, size}
+        }
+    );
+    return response.data;
+};
+
 
 export const postReview = async (id, content, rating) => {
     const response = await axios.post(`/api/movie/${id}/review`, {

@@ -1,6 +1,10 @@
 package me.jeong.movieinfo;
 
+import me.jeong.movieinfo.domain.Board;
+import me.jeong.movieinfo.domain.Post;
 import me.jeong.movieinfo.domain.Review;
+import me.jeong.movieinfo.repository.BoardRepository;
+import me.jeong.movieinfo.repository.PostRepository;
 import me.jeong.movieinfo.repository.ReviewRepository;
 import me.jeong.movieinfo.utils.DateUtils;
 import me.jeong.movieinfo.external.TmdbAPI;
@@ -16,11 +20,15 @@ class MovieinfoApplicationTests {
     @Autowired
     private DateUtils date;
     @Autowired
-    private ReviewRepository reviewRepository;
+    private PostRepository postRepository;
+    @Autowired
+    private BoardRepository boardRepository;
 
     @Test
     void contextLoads() {
-        tmdbAPI.updateRecentPopularity();
+        Board board = new Board();
+        board.setName("영화잡담");
+        boardRepository.save(board);
     }
 
 }

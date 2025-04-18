@@ -20,7 +20,7 @@ import java.util.Set;
 @JsonIgnoreProperties(ignoreUnknown = true) // JSON의 불필요한 필드를 무시
 public class Movie extends BaseEntity {
     @Id
-    private Long id;
+    private long id;
 
     @Column(length = 1000)
     private String overview;

@@ -4,12 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class GenreDTO {
-    private long id;
-    private String name;
+public class PostRequestDTO {
+    private String content;
+    private MultipartFile attachmentFiles;
+    private Boolean isSpoiler;
 }

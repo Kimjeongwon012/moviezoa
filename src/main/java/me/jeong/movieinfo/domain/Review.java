@@ -17,9 +17,9 @@ import lombok.Setter;
 public class Review extends BaseEntity {
     @Id
     @GeneratedValue
-    private Long id;
+    private long id;
 
-    private Long movieId; // 리뷰를 작성한 영화 ID
+    private long movieId; // 리뷰를 작성한 영화 ID
     private String content;
     private int rating;
 }

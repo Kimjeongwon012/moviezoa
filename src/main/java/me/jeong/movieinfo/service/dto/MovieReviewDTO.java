@@ -10,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MovieReviewDTO {
-    private Long id;
+    private long id;
     private String content;
     private int rating;
 }
