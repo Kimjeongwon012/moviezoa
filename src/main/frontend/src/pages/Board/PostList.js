@@ -37,11 +37,11 @@ function PostList() {
                     <div className={styles.posts}>
                         <table>
                             <thead>
-                            <tr>
-                                <th>번호</th>
-                                <th>제목</th>
-                                <th>글쓴이</th>
-                                <th>날짜</th>
+                            <tr className={styles.postsHeader}>
+                                <th style={{width: '5%'}}>번호</th>
+                                <th style={{width: '45%'}}>제목</th>
+                                <th style={{width: '15%'}}>글쓴이</th>
+                                <th style={{width: '10%'}}>날짜</th>
                                 <th>조회 수</th>
                             </tr>
                             </thead>
@@ -54,7 +54,6 @@ function PostList() {
                                 </tr>
                             ) : (
                                 board.posts.map((post) => (
-
                                     <tr key={post.id}>
                                         <td>{post.id}</td>
                                         <td>{post.title}</td>

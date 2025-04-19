@@ -198,7 +198,7 @@
 .mainContainer {
     display: flex;
     flex-wrap: wrap;
-    background-color: white;
+    background-color: #f3f2f0;
     background-repeat: repeat;
     min-height: 1280px;
 }

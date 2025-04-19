@@ -1,21 +1,26 @@
 /* Header.module.css */
 
 .header {
-    background-color: #25292e;
+    display: flex;
+    justify-content: center;
+    background-color: #f3f2f0;
+    align-items: center;
+    padding-top: 30px;
 }
 
 .navbar {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #25292e;
+    background-color: #f3f2f0;
     padding: 10px 5%;
     color: white;
-    margin: 0 auto;
+
 }
 
 .logo img {
     width: 60px;
+    background-color: red;
 }
 
 .nav {

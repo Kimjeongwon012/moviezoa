@@ -5,10 +5,10 @@ import {Link} from 'react-router-dom';
 function Header() {
     return (
         <header className={styles.header}>
+            <div className={styles.logo}>
+                <img src="logo.png" alt="IMDB"/>
+            </div>
             <div className={styles.navbar}>
-                <div className={styles.logo}>
-                    <img src="logo.png" alt="IMDB"/>
-                </div>
                 <nav className={styles.nav}>
                     <button className={styles.menuBtn}>☰ Menu</button>
                     <select className={styles.dropdown}>
